@@ -1,0 +1,63 @@
+#message_view_container
+  #message_view.clearfix.container
+    #message_view_left_column.span-15
+      .post_message{:id=>"post_message_#{message.id}"}
+        .actions
+          =link_to "new message", new_message_path, :remote=>true, :title=>"Post a message", |
+                   :class=>"orange-text small-text", :id=>"actions_message_new_message"
+          
+          =link_to "reply to sender", new_message_path(:parent_id=>message.id,  | 
+                   :reply_to=>Message::MESSAGE_REPLY_TO_SENDER), :remote=>true, | 
+                   :class=>"orange-text small-text", :id=>"reply_to_sender"
+                   
+          -if not message.circle.nil?
+            =link_to "reply to circle", new_message_path(:parent_id=>message.id, |
+                     :reply_to=>Message::MESSAGE_REPLY_TO_CIRCLE), :remote=>true, | 
+                     :class=>"orange-text small-text", :id=>"reply_to_circle"
+        
+        #message_author_photo.float-left
+          =image_tag message.sender.profile.avatar_url, :size => "50x50"
+          =render :partial=>'/messages/voting_widget', :locals=>{:message=>message}   
+        #message_container.float-left
+          #message_header.line-spacing-small
+            %span{:class=>'bold-text orange-text'}
+              =message.to
+            %br
+            %span
+              =message.sender.profile_full_name
+            %br
+            %span
+              =message.created_at.strftime(I18n.t('time.formats.default'))
+            %br
+            %br
+            %br
+            %span{:class=>'bold-text'}
+              =message.title
+          #message_body
+            -if message.content.blank?
+              %span{:class=>"lightgrey-text"}
+                ="MESSAGE IS EMPTY"
+            -else
+              =message.content.html_safe
+          #attached_file_list
+            -message.zfiles.each do |a|
+              %span{:class=>"attached-file"}
+                ="#{a.name}"
+                %span{:style=>"text-align: right"}
+                  =link_to "download", a.url
+                  -if a.ipaper_id and a.ipaper_access_key
+                    =link_to " | view",  "javascript:start_ipaper('#ipaper_viewer', #{a.ipaper_id}, '#{a.ipaper_access_key}');", :class=>'action view'
+                    =link_to " | hide",  "#", :class=>'action hide', :style=>"display: none"
+                    
+              %br
+            -if message.zfiles.length > 0
+              %br
+              %hr
+          =render :partial=>'messages/message_comments', :locals=>{:message=>message}
+        .clear
+        #ipaper_viewer
+          #embedded_flash
+  
+              
+          
+  

@@ -1,0 +1,11 @@
+en:
+    controllers:
+        classrooms:
+            create:
+                success: "The new classroom was successfully saved."
+                error: "Could not save classroom. Errors: %{errors}."
+            update:
+                success: "%{classroom} information was updated."
+                error: "Could not update %{classroom} information. Errors: %{errors}."
+            destroy:
+                success: " %{classroom} was successfully deleted."

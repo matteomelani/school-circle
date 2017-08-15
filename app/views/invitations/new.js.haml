@@ -1,0 +1,5 @@
+-content_for :invitation_page do
+  =render :partial=>'invitations/new', :locals=>{:invitation=>@invitation}
+  
+show_modal_window_full_screen('invitation_page', "#{escape_javascript(content_for(:invitation_page))}");
+load_js_for_invitations_new_page();

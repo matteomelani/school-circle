@@ -1,0 +1,8 @@
+-content_for :show_message_page do
+  =render :partial=>'messages/message', :locals=>{:message=>@message}
+  
+show_modal_window_full_screen('show_message_page', "#{escape_javascript(content_for(:show_message_page))}");
+
+load_js_for_view_message();
+
+

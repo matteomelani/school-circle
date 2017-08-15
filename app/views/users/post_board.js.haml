@@ -1,0 +1,6 @@
+-content_for :feed do
+  =render :partial=>'users/post_board', :locals=>{:feed_items=>@feed_items}
+
+$('.user_feed').html("#{escape_javascript(content_for(:feed))}");
+load_js_for_post_board_widget();
+

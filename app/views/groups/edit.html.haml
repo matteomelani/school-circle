@@ -1,0 +1,26 @@
+-content_for :title do
+  ="#{@group.name}"
+  
+-content_for :user_strip do
+  =render :partial=>'shared/circles_links'  
+
+-content_for :single_panel do
+  .span-16
+    .element_bar
+    .element_container
+      =render :partial=>'shared/profile_picture_widget_2', :locals=>{:has_avatar=>@group}  
+      =render :partial=>'form', :locals=>{:group=>@group }
+      .clear
+  .span-7
+    .element_bar
+    .element_container
+  .clear
+
+  .span-16
+    .thick_divider_line
+  .span-7.last{:style=>"padding-left: 10px"}
+    .thick_divider_line
+    
+-content_for :page_javascript do
+  :javascript
+    load_js_for_classrooms_edit_page();

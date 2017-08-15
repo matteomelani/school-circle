@@ -1,0 +1,44 @@
+.topbar
+  .fill
+    .header.container
+      .span-7
+        =link_to image_tag("logo_3_265x29.png", :alt => "the school circle logo", :id=>"logo"), root_path
+      .span-15
+        -if user_signed_in?
+          .header_nav_menu
+            %ul{:class=>"top_link"}
+              %li
+                =link_to "#", :class=>"submenu" do
+                  =image_tag @user.profile.avatar_url, :size=>"22x22", :alt=>"me"
+                  =@user.profile.first_name
+                  %span
+                %ul{:class=>"menu"}
+                  %li
+                    =link_to 'Account', edit_user_account_path(@user), :id=>"settingslink"
+                  %li  
+                    =link_to 'Profile', edit_user_profile_path(@user), :id=>"profilelink"
+                  %li
+                    -if @user.my_family.nil?
+                      =link_to "Family", new_family_path, :title => "view/edit my family", :id=>"myfamily"
+                    -else
+                      =link_to "Family", edit_family_path(@user.my_family.id), :title => "view/edit my family", :id=>"myfamily"
+                  %li{:class=>"divider"}
+                    =link_to 'Circles', classrooms_path, :id=>"circleslink"
+                  %li
+                    =link_to "Groups", groups_path, :title=>"manage my circles", :id=>"mygroups"
+                  %li  
+                    =link_to "Classrooms", classrooms_path, :title => "view/edit my classrooms", :id=>"myclassrooms"
+                  %li  
+                    =link_to "Schools", schools_path, :title => "view my schools", :id=>"myschools"  
+                  %li{:class=>"divider"}
+                    =link_to "Sign out", destroy_user_session_path
+                
+        -else
+          .header_nav_menu
+            %ul
+              %li
+                =link_to "Signin", new_user_session_path
+        .home_link
+          -if user_signed_in?
+            =link_to image_tag("home_32x32.png",:size=>"28x28"), user_path(current_user), :id=>"homelink"
+    .clear

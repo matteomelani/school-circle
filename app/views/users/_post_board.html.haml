@@ -1,0 +1,6 @@
+.post_board_container
+  .post_board
+    .posts
+      =render :partial=>'circles/feed_item', :collection=>feed_items
+      =will_paginate feed_items
+.clear

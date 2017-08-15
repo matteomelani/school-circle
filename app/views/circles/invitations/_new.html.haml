@@ -1,0 +1,32 @@
+.invitation_page_title_container
+  .invitation_page_title
+    ="#{invitation.circle.source.display_name} Invitation"
+    #cancel_X
+      ="X"    
+.invitation_page_container
+  .span-14        
+    .invitation_container.padding-left-10px
+      .connections_search_box
+        =label_tag :recipient, "Name or email of the person you like to invite:"
+        %br
+        =text_field_tag(:recipient, "", :'data-endpoint'=>user_connections_path(@user, :types=>['users','contacts']))
+      =form_for invitation, :url=>{ :controller=>'circles/invitations', :action=>'create', 
+                :circle_id=>invitation.circle.id}, :remote=>true, :html=>{:'data-type'=>'json'} do |f|
+        .invited_people
+          %span.bold-text
+            Invited people:
+          %br
+        =f.label :optional_message, "Add a note to the invitation (optional)"
+        =f.text_area :optional_message
+        =f.fields_for :registration_info do |registration_info|
+          -invitation.registration_info.each do |key, value|
+            =registration_info.hidden_field key.to_sym, :value=>value
+        =f.hidden_field :inviter_id, :value => invitation.inviter_id
+        =f.hidden_field(:circle_id, :value=>invitation.circle_id)        
+        .button_container
+          =f.submit "invite", :class=>"submit_button"
+  
+  .span-8
+    .contacts_container
+     
+  .clear

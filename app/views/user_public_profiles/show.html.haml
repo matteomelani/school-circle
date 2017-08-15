@@ -1,0 +1,8 @@
+-content_for :title  do
+  ="#{@object_user.profile.full_name}'s Public Profile"
+    
+-content_for :right_panel do
+  =render :partial=>"user_public_profile", :locals=>{:user=>@object_user}
+    
+-content_for :left_panel do
+  =render :partial=>'shared/dashboard'    

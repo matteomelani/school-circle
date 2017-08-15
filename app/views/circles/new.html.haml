@@ -1,0 +1,9 @@
+-content_for :title  do
+  ="Browse Circles"
+
+-content_for :left_panel do
+  =render :partial=>'circles/form', :locals=>{:view_only=>false}
+
+-content_for :right_panel do
+  =render :partial=>'shared/user_dashboard'
+  

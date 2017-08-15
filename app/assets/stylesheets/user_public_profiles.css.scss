@@ -1,0 +1,27 @@
+.user_public_profiles.show {
+	.user_tag {
+		padding: 10px 5px 10px 0;
+		margin-bottom: 20px;
+		img {
+			display: block;
+			float: left;
+			margin-right: 10px;
+		}
+		.user_info {
+			color: $black; 
+			float: left;
+		    font-size: 14px;
+			.title {
+				font-size: 30px;
+				color: $black;
+			}
+			.actions {
+				float: right;
+			}
+			.contact {
+			}
+			.stats {
+			}
+		} 
+	}
+}

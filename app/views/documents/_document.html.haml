@@ -1,0 +1,9 @@
+=div_for document do
+  .file_name
+    =document.asset.name
+  .post_date
+    =document.updated_at.strftime(I18n.t('time.formats.default'))
+  .source
+    =document.source_type
+  .actions
+    =link_to "view", "#"

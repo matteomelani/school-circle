@@ -1,0 +1,34 @@
+-content_for :title  do
+  ="Classrooms"
+
+-content_for :user_strip do
+  =render :partial=>'shared/circles_links'
+    
+-content_for :single_panel do 
+  .span-16
+    .element_bar
+    .element_container
+  .span-7.last.last{:style=>"padding-left: 10px"}
+    .element_bar
+    .element_container
+  .clear
+  .span-16
+    %br
+    =link_to "+ Create New Classroom", new_classroom_path
+    %br
+    %br
+  .classrooms   
+    -@user.classrooms.each do |c|
+      =render :partial=>'classroom', :locals=>{:classroom=>c, :is_ajax=>true}
+    .info_message{:style=>"display: none;"}
+      You are not subscribed to any classrooms.
+
+  .span-16
+    .thick_divider_line
+  .span-7.last{:style=>"padding-left: 10px"}
+    .thick_divider_line
+    
+    
+-content_for :page_javascript do
+  :javascript
+    load_js_for_classrooms_index_page();

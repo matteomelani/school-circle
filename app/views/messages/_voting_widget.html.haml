@@ -1,0 +1,41 @@
+-my_vote = ActsAsVotable::Vote.where(:voter_id=>@user.id, :votable_id=>message.id, :votable_type=>message.class.base_class.name).first
+.vote{:'data-vote'=>"#{my_vote}", :'data-vote-id'=>"#{my_vote ? my_vote.id : ''}"}
+  -if my_vote.nil? #user has not voted this message
+    .vote_up
+      =link_to image_tag('vote_up_32x32.png'), "#", :title=>"This message was useful. Send me more like this!", :class=>"vote_up_button", :undo_title=>'Click again to UNDO your up vote.'                    
+      =form_for vote=ActsAsVotable::Vote.new, :url=> votes_path, :remote=>true, :html=>{:class=>"message_vote_up", :id=>"message_vote_up_#{message.id}"} do |f|
+        =f.hidden_field :votable_id, :value=>message.id
+        =f.hidden_field :votable_type, :value=>message.class.base_class.name.to_s #use the base class otherwise acts_as_votable cannot retrieves the votes
+        =f.hidden_field :vote_flag, :value=>'t'
+        =f.submit ""
+      =link_to "", 'votes/', :method=>:delete, :remote=>true, :class=>'vote_up_delete'
+    .vote_result
+      ="#{message.upvotes.count-message.downvotes.count}"
+    .vote_text
+      ="votes"
+    .vote_down
+      =link_to image_tag('vote_down_32x32.png'), "#", :title=>"This message was not very useful.", :class=>"vote_down_button", :undo_title=>'Click again to UNDO your down vote.' 
+      =form_for vote=ActsAsVotable::Vote.new, :url=> votes_path, :remote=>true, :html=>{:class=>"message_vote_down", :id=>"message_vote_down_#{message.id}"} do |f|
+        =f.hidden_field :votable_id, :value=>message.id
+        =f.hidden_field :votable_type, :value=>message.class.base_class.name.to_s #use the base class otherwise acts_as_votable cannot retrieves the votes
+        =f.hidden_field :vote_flag, :value=>'f'
+        =f.submit ""
+      =link_to "", 'votes/', :method=>:delete, :remote=>true, :class=>'vote_down_delete'  
+  -elsif my_vote.vote_flag #user has voted up this message      
+    .vote_up
+      =image_tag('vote_up_voted_32x32.png')                    
+    .vote_result
+      ="#{message.upvotes.count-message.downvotes.count}"
+    .vote_text
+      ="votes"
+    .vote_down
+      =image_tag('vote_down_32x32.png')
+  -else #user has voted down this message
+    .vote_up
+      =image_tag('vote_up_32x32.png')                    
+    .vote_result
+      ="#{message.upvotes.count-message.downvotes.count}"
+    .vote_text
+      ="votes"
+    .vote_down
+      =image_tag('vote_down_voted_32x32.png')

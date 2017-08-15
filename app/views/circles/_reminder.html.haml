@@ -1,0 +1,17 @@
+#reminder.yellow-background
+  #reminder_author_photo.float-left
+    =image_tag reminder.sender.profile.avatar_url, :size => "50x50"
+  #reminder_container.float-left
+    #reminder_header.line-spacing-small
+      %span{:class=>'bold-text'}
+        =link_to "#{reminder.circle.display_name}", reminder.circle, :class=>'bold-text orange-text'
+      %br
+      %span{:class=>'bold-text'}
+        =reminder.sender.profile_full_name
+    #reminder_body.grey-text
+      =reminder.content.html_safe
+    %span{:id=>"reminder_post_time",:class=>'orange-text'}
+      ="#{time_ago_in_words(reminder.created_at)} ago."
+  #reminder_actions_container.clearfix
+    #reminder_actions.float-right
+    

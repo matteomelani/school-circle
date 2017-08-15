@@ -1,0 +1,15 @@
+-content_for :title do
+  ="Help"
+
+-content_for :header do
+  =render :partial=>'shared/general_header', :locals=>{:sign_up_button=>true} 
+      
+-content_for :single_panel do
+  .help_link
+    .title
+      Useful Links
+    =link_to "Forgot your password?", new_user_password_path
+    %br
+    =link_to "Didn't receive confirmation instructions?", new_user_confirmation_path
+    %br
+    =link_to "Didn't receive unlock instructions?", new_user_unlock_path

@@ -1,0 +1,8 @@
+-display_as_conversation=true if local_assigns[:display_as_conversation].nil?
+
+-if feed_item.is_a? Reminder
+  =render :partial=>"circles/reminder", :locals=>{:reminder=>feed_item}
+-elsif feed_item.is_a? Message
+  =render :partial=>"circles/message_tag", :locals=>{:message=>feed_item, :display_as_conversation=>display_as_conversation}
+-else
+  ="PANIC! #{feed_item.inspect}"

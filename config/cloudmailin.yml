@@ -1,0 +1,18 @@
+development:
+    attachments_s3_bucket: cloudmailin-staging
+
+test:
+    attachments_s3_bucket: cloudmailin-staging
+
+staging:
+    attachments_s3_bucket: cloudmailin-staging
+
+production:
+    attachments_s3_bucket: cloudmailin-staging
+
+alpha:
+    attachments_s3_bucket: tsc-alpha
+    path: cloudmailin-staging
+
+demo:
+    attachments_s3_bucket: cloudmailin-staging

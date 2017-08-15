@@ -1,0 +1,49 @@
+%html{:lang=>'en'}
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  %head
+  %body
+    .invitation{ :style=>'padding: 10px;' }
+      .invitation_message
+        ="Hello,"
+        %br
+        =@invitation.optional_message
+
+      .invitation_card{ :style=>'background: #f1f3ea;  width: 600px; border: 1px solid grey; margin: 20px; padding: 5px 10px 30px 5px;'}
+        %table
+          %tbody
+            %tr
+              %td{:style=>'width: 450px; padding-top: 20px'}
+                %table
+                  %tbody
+                    %tr
+                      %td{:style=>"width: 60px;"}
+                        ="from:"
+                      %td
+                        %span{:style=>'font-weight: bold;'}
+                          ="#{@invitation.inviter.profile.full_name}"
+                    %tr
+                      %td{:style=>"width: 60px;"}  
+                        ="circle:"
+                      %td
+                        %span{:style=>'font-weight: bold;color: #F26531;'} 
+                          ="#{@invitation.circle.source.display_name}"
+                          -if @invitation.circle.source.is_a?(Classroom) and  @invitation.circle.source.is_verified?
+                            %span{:style=>'font-weight: normal; color: black;'}
+                              ="(#{@invitation.circle.source.school.display_name})" 
+                    %tr
+                      %td{:style=>"width: 60px;"}  
+                        ="valid until:"
+                      %td
+                        %span{:style=>'font-weight: bold;'} 
+                          ="#{@invitation.expires_on.strftime(I18n.t('date.formats.long'))}"
+    
+              %td{:style=>'padding:0px; text-align: right; width: 150px;'}  
+                .logo{ :style=>'opacity: .50; filter: alpha(opacity=50);' }
+                  =image_tag UrlHelpers.get_aws_public_url("/images/logo_155x60.png"), :alt => "the school circle logo", :id=>"logo"
+            %tr
+              %td
+                .join_in_button{ :style=>'display: block; width: 120px; margin: 30px 10px 10px 10px; padding: 5px; background: #F26531; font-weight: bold;text-align: center;'}
+                  =link_to "accept invitation", @accept_invitation_url, :style=>'color: white;'  
+              %td
+      .theschoolcircle_card
+        -# TheSchoolCircle is the new web app to help parents and teacher communicate better.  

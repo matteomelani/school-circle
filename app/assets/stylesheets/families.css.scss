@@ -1,0 +1,80 @@
+.thin_divider_line{
+	border-top: 2px solid $super-light-grey;
+}
+
+.delete_circle_source{
+	border-top: 1px solid $super-light-grey;
+	a {
+		color: white;
+		display: block;
+		background: $grey;
+		padding: 5px 10px 5px 10px;
+		width: 100px;
+		text-align: center;
+	}
+	margin-bottom: 30px;
+	padding: 20px 0px 20px 10px;
+	.button_container{
+		border: none;
+	}
+}
+.memberships_container .element_bar{
+	border-bottom: 1px solid $super-light-grey;
+	.element_title{
+		color: $super-light-grey;
+	}
+}
+
+.new_child_page{
+	background: white;
+	width: 900px;
+	height: 600px;
+	padding: 20px 10px 0 10px;
+}
+.family_info { 
+    margin-top: 20px;
+    .button_container {
+	   border-top: 0px;
+       .actions a {
+	      color: black;
+       }
+    }
+}
+
+#family_members {
+	color: $grey;
+}
+#add_adult{
+	margin-right: 30px;
+}
+#adult_invitation{
+	background: white;
+	border: 10px solid black;
+	width: 600px;
+	padding-top:20px;
+}
+#child_memberships{
+	margin-bottom:30px;
+	clear: both;
+}
+#child_memberships label{
+	color: black;
+}
+#child_memberships textarea{
+	width: 535px;
+}
+.membership_info_container{
+	padding: 15px 0 20px 10px;
+	border-bottom: 1px solid $super-light-grey;
+	background: $grey-yellow;
+}
+
+.member_family_container{
+	padding: 15px 0 20px 10px;
+	border-bottom: 1px solid $super-light-grey;
+	background: $grey-yellow;
+	.member_family{
+		overflow: auto;
+		max-height: 145px;
+	}
+}

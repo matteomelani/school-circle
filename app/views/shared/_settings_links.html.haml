@@ -1,0 +1,4 @@
+.user_strip_links
+  =link_to 'My Profile', edit_user_profile_path(@user), :id=>"myprofile"
+  =link_to "My Account", edit_user_account_path(@user), :id=>"myaccount"
+  =link_to "My Notifications", "#", :title=>"manage how info is pushed to me", :id=>"mynotifications"

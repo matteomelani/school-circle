@@ -1,0 +1,63 @@
+.invitation_page_title_container
+  .invitation_page_title
+    -if invitation.circle.nil?
+      ="Circle Invitation"
+    -else
+      ="#{invitation.circle.source.display_name} Invitation"
+    #cancel_X
+      ="X"    
+.invitation_page_container
+  .span-12
+    .invitation_container.padding-left-10px
+      .element_bar
+        .element_title
+          invitation
+      .element_container
+         
+      .connections_search_box
+        .element_bar_thin
+          .element_title_left
+            choose people to invite
+        ="Type a name or email. To invite multiple users just separate the emails with a comma."
+        %br
+        =text_field_tag(:recipient, "", :'data-endpoint'=>user_connections_path(@user, :types=>['users','contacts']))
+      %br
+      =form_for invitation, :remote=>true, :html=>{:'data-type'=>'json'} do |f|
+        .invited_people
+          .element_bar_thin
+            .element_title_left
+              invited people  
+        %br
+        -if invitation.circle.nil?
+          .element_bar_thin
+            .element_title_left
+              circle
+          -# =f.label :circle_id, "Choose a circle:"
+          =f.select :circle_id, @user.circles.collect{ |c| [c.source.display_name, c.id]}
+          %br
+        -else
+          =f.hidden_field(:circle_id, :value=>invitation.circle_id)
+          
+        %br
+        .optional_message  
+          .element_bar_thin
+            .element_title_left
+              Add a note to the invitation (optional)
+          -# =f.label :optional_message, "Add a note to the invitation (optional)"
+          =f.text_area :optional_message
+        =f.fields_for :registration_info do |registration_info|
+          -invitation.registration_info.each do |key, value|
+            =registration_info.hidden_field key.to_sym, :value=>value
+        =f.hidden_field :inviter_id, :value => invitation.inviter_id
+         
+        .button_container
+          =f.submit "invite", :class=>"submit_button"
+  .span-9
+    .contacts_container{:style=>'margin-left: 20px;'}
+      .element_bar
+        .element_title
+          my contacts
+      .element_container
+        .contacts
+          =render 'invitations/contacts'
+  .clear

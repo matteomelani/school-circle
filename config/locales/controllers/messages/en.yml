@@ -1,0 +1,7 @@
+en:
+    controllers:
+        messages:
+            create:
+                success: "Your message was posted!"
+                warning:
+                    posted_but_problem_with_asset: "Your message was posted however there was a problem with the attachments."

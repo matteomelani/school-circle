@@ -1,0 +1,20 @@
+=form_for user, :url=>new_registration_users_path do |f|
+  =f.fields_for :profile do |p|
+    =p.label :first_name, 'first name'
+    -if session.fetch('registration_hash', {})[:first_name]
+      =p.text_field :first_name, :value=>session['registration_hash'][:first_name]
+    -else
+      =p.text_field :first_name
+    =p.label :first_name, 'last name'
+    =p.text_field :last_name
+  =f.label :email, 'email'
+  =f.text_field :email
+  =f.label :password, 'password'
+  =f.password_field :password
+  =link_to "Didn't receive confirmation instructions?", new_confirmation_path("user")
+  =f.submit "Ok, I am done!", :class=>'button'
+.clear
+
+-content_for :page_javascript do
+  :javascript
+    load_js_for_registration_form();

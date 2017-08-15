@@ -1,0 +1,11 @@
+en:
+    activerecord:
+        models:
+            profile: Message
+            attributes:
+                message:
+        errors:
+            models:
+                message:
+                    validator:
+                        no_receiver_and_no_circle: "A message must be sent to a user (receiver) or to a circle."

@@ -1,0 +1,76 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:                
+    language: "English"
+    
+    attributes:
+        created_at: "Created at"
+        updated_at: "Updated at"
+
+    helpers:
+        submit:
+            user:
+                create: "Sign up"
+                update: "Update"
+        label:
+            user:
+                first_name: "First name"
+                last_name: "Last name"
+                birthday: "Birthday"
+                address: "Address"
+                phone: "Phone number"
+                email: "E-mail"
+                comment: "Comment"
+    date:
+        formats:
+            default: "%Y-%m-%d"
+            short: "%b %d"
+            long: "%B %d, %Y"
+            day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+            abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+            month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
+            abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+            order: 
+                :year 
+                :month
+                :day
+
+    time:
+        formats:
+            default: "%a, %d %b %Y %I:%M %P"  # %Z for time zone as PDT
+            short: "%d %b %H:%M"
+            long: "%B %d, %Y %H:%M"
+            am: "am"
+            pm: "pm"
+    
+            
+    activerecord:
+        errors:
+            family:
+              no_language_set: "Family must have at least one language set."
+            membership:
+                one_memebership_per_circle: "Can only have a valid membership per circle"
+
+
+    address_not_available: "address not available"
+    phone_number_not_available: "phone number not available"    
+
+    invalid:
+        phone: "must be a valid phone number"
+        url: "must be a valid http url"
+
+    family:
+        new:
+            successful: "Your family has been successfully created"
+        update:
+            successful: "Family data updated."                
+    circle:
+        post_create:
+            successful: "Your post was submitted successfully!"
+        post_update:
+            successful: "Your post was update successfully!"
+        post_delete:
+            successful: "Post deleted successfully!"
+
+   

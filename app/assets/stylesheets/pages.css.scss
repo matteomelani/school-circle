@@ -1,0 +1,132 @@
+// TOD: dry me up a bit
+// CSS common to all pages
+.pitch {
+	width: 350px;
+	padding: 20px;
+	background: $foreground-color;
+	margin-left: 20px;
+	@include label_shadow_and_corners;
+	.title {
+		@include title;
+	}
+	.text {
+		@include text;
+	}
+}
+
+.sign_in_button {
+	margin-top: 40px;
+}
+
+.sign_up_button {
+	margin-top: 30px;
+	bottom: 50px;
+	left:10px;
+	padding-top: 20px;
+}
+
+// No distances from header to main pannel
+#page.home, #page.help, #page.about,
+#page.unlocks.new, #page.unlocks.create,
+#page.passwords.new, #page.passwords.create, 
+#page.confirmations.new, #page.confirmations.create {
+	.main_panel {
+		margin-top: 0px;
+	}
+	.footer .copyright {
+		margin-right: 10px;
+	}
+}
+
+// Help
+.help_link{
+	.title {
+		@include title;
+	}  
+	background: $foreground-color;
+	width: 300px;
+	height: 200px;
+	margin-left: 20px;
+	padding: 20px;
+	font-size: 16px;
+	@include label_shadow_and_corners;
+}
+
+// Confirmation
+#page.confirmations.new, #page.confirmations.create {
+	.single_panel {
+		height: 450px;
+	}
+	.pitch{
+		width: 500px;
+		input[type="text"]{
+			width: 308px;
+		}
+		form {
+			display: block;
+			margin: 20px 0 20px 0;
+			input[type='submit'] {
+				margin-top: 5px;
+				height: 38px;
+			}
+		}
+	}
+}
+
+// Password
+#page.passwords.new, #page.passwords.create {
+	.pitch{
+		form {
+			display: block;
+			margin: 20px 0 20px 0;
+			input[type='submit'] {
+				height: 38px;
+				margin-top: 5px;
+				width: 266px;
+			}
+		}
+	}
+}
+
+// Unlocks
+#page.unlocks.new, #page.unlocks.create {
+	.single_panel {
+		height: 450px;
+	}
+	.pitch{
+		width: 500px;
+		form {
+			display: block;
+			margin: 20px 0 20px 0;
+			input[type='submit'] {
+				margin-top: 5px;
+				height: 38px;
+				width: 266px;
+			}
+		}
+	}
+}
+
+
+//About
+#page.pages.about {
+	.single_panel {
+		margin-top: 0px;
+		height: 600px;
+	}
+}
+.pitch {
+	width: 460px;
+	.text{
+		font-size: 16px; }
+	}
+
+	.team {
+		float: left;
+		margin: 20px 0 0 20px;
+		padding: 0px 20px 20px 20px;
+		.title {
+			@include title;
+			color: $black;
+		}
+	}

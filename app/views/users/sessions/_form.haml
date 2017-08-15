@@ -1,0 +1,15 @@
+=form_for user=User.new, :as=>"user", :url=>session_path("user") do |f|
+  =f.label :email, 'email'
+  =f.text_field :email
+  =f.label :password, 'password'
+  =f.password_field :password
+  =link_to "Forgot your password?", new_password_path("user")
+  / -# for simplicity we keep this out
+  / =f.check_box :remember_me
+  / =f.label :remember_me, "Keep me signed in", :class=>"grey-text"
+  %br 
+  =f.submit "Sign in", :class=>'button'
+
+-content_for :page_javascript do
+  :javascript
+    load_js_for_session_form();

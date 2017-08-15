@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+%html
+  %head
+    =render 'layouts/stylesheets'
+    %style{:type=>"text/css"}
+      =yield :stylesheets
+    =csrf_meta_tag
+    =favicon_link_tag "/favicon.ico"
+    %title 
+      ="#{yield :title}"
+  %body
+    #loading
+    #modal_window.modal_window
+      #modal_window_container.modal_window_container
+        #close.close
+          =link_to "Close", "#"
+          =link_to image_tag('cancel.png'), "#", :style=>"background: white;"
+        =yield :modal_window
+        #modal_window_container_footer.modal_window_container_footer
+    #page{:class=>page_class}
+      .header
+        -if content_for?(:header)
+          =yield :header
+        -else
+          =render 'layouts/header'  
+      .main_panel.container
+        #flash_region
+          -flash.each do |key, value|
+            =content_tag(:div, value, :class => "flash #{key}") unless value.blank?
+          -unless flash.empty?
+            .flash_region_close
+              =image_tag('cancel.png')
+          
+        -if content_for?(:left_panel) && content_for?(:right_panel)
+          .left_panel_wrapper.span-7
+            .left_panel
+              =yield :left_panel 
+          .right_panel_wrapper.span-15.last
+            .right_panel
+              =yield :right_panel 
+        -elsif content_for? :single_panel  
+          .single_panel
+            =yield :single_panel
+        -else
+          .single_panel
+            =yield
+        
+        #global_bottom_panel
+      .footer
+        -if content_for?(:footer)
+          =yield :footer
+        -else
+          =render 'layouts/footer'    
+      
+      
+      -#TODO: remove #shadow and set the background of the #modal_window 
+      #shadow
+      =render 'layouts/javascript'
+      -session_key = Rails.application.config.session_options[:key]
+      -current_user_id = (current_user ? current_user.id : 0)
+      -current_user_sign_in_count = (current_user ? current_user.sign_in_count : 0)
+      :javascript
+        load_global_variables("#{current_user_id}", "#{current_user_sign_in_count}",  "#{HasAvatar::DEFAULT_PHOTO_URL}");      
+      -if content_for? :page_javascript 
+        =yield :page_javascript
+      
+             
+                    
+      -# UserVoice.com widget                 
+      / :javascript
+      /       var uvOptions = {};
+      /           (function() {
+      /             var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+      /             uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/B7SKECEO97kxPG4lKcMsQ.js';
+      /             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+      /           })();
+      /   

@@ -1,0 +1,12 @@
+  <div id="join_leave_form">
+  <% memberships = user.memberships.where(:circle_id=>circle.id) %>
+  <% if memberships.count == 1 %>
+    <% if circle.owner != user %>
+      <%=  render :partial=>'shared/leave_form', :locals=>{:membership => memberships[0]} %>
+    <% elsif %>
+      <%= "You own this circle"%>
+    <% end%>
+  <% else %>
+    <%=  render :partial=>'shared/join_form',  :locals=>{:membership => Membership.new(:user_id=>user.id,:circle_id=>circle.id)}  %>
+  <% end %>
+  </div>

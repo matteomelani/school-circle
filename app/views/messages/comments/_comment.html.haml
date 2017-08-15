@@ -1,0 +1,31 @@
+.comment
+  #comment_author_photo.float-left
+    =image_tag comment.user.profile.avatar_url(:small), :size => "40x40"
+  .actions.float-right
+    -if comment.user_id=@user.id
+      =link_to "X", message_comment_path(@message, comment, :format=>:json), :method=>:delete, :remote=>true, :class=>'delete', :title=>'Delete this comment'
+  #comment_container.float-left
+    #comment_header.line-spacing-small
+      %span{:class=>'bold-text'}
+        =comment.user.profile_full_name
+      %span{:class=>'grey-text'}
+        ="(@#{comment.user.username})"
+      %br
+    #comment_body.grey-text
+      =comment.comment.html_safe
+    #reminder_post_time.orange-text.float-left
+      ="#{time_ago_in_words(comment.created_at)} ago."
+    .like_result.float-left
+      -if comment.upvotes.count > 0
+        =" #{pluralize(comment.upvotes.count,"person")} like this. "
+    #comment_actions.float-left
+      -unless current_user.voted_for? comment 
+        =form_for vote=ActsAsVotable::Vote.new, :url=> votes_path, :remote=>true do |f|
+          =f.hidden_field :votable_id, :value=>comment.id
+          =f.hidden_field :votable_type, :value=>comment.class
+          =f.hidden_field :vote_flag, :value=>'t'
+          =f.submit "Like"
+  .clear
+        
+  
+      

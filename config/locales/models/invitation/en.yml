@@ -1,0 +1,5 @@
+en:
+    models:
+        invitation:
+            optional_message:
+                default: "I am a member of the %{circle_name} and here it is an invitation to join me."

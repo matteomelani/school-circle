@@ -1,0 +1,29 @@
+-content_for :title  do
+  ="#{@user.profile.first_name}'s Home"
+
+-content_for :left_panel do
+  =render :partial=>'shared/dashboard'
+
+-content_for :right_panel do
+  -if @what_to_display == "welcome"
+    =render :partial=>'users/welcome', :locals=>{:user=>@user}
+  -else
+    .user_strip
+      .user_strip_links
+        =link_to 'ALL', user_post_board_path(@user), :remote=>true, :format=>:js,:class=>'message_filter all', :id=>"message_filter_none"     
+        -if @user.profile.is_parent?
+          -if @user.my_family
+            -@user.my_family.children.each do |child|
+              =link_to child.profile_first_name, user_post_board_path(@user,:children=>"#{child.profile_first_name.downcase}"), :remote=>true, 
+                       :format=>:js, :class=>'message_filter', :id=>"message_filter_children_#{child.profile_first_name.downcase}"
+        -elsif @user.profile.is_teacher? && @user.my_classrooms
+          -@user.my_classrooms.each_with_index do |classroom, index|
+            =link_to classroom.short_name, user_post_board_path(@user,:circles=>[classroom.circle.id]), :remote=>true, :format=>:js,:class=>'message_filter'
+     
+    .user_feed{:style=>"min-height: 20px;"}
+      =render :partial=>'users/post_board', :locals=>{:feed_items=>@feed_items}
+    .clear    
+
+-content_for :page_javascript do
+  :javascript
+    load_js_for_post_board_widget();

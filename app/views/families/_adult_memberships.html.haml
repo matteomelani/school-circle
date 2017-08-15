@@ -1,0 +1,26 @@
+.span-16
+  .element_bar_thin
+    .element_title_left 
+
+#adult_memberships
+  -family.adult_memberships.each do |a|
+    -unless a.user==current_user
+      =render :partial=>'circles/circle_membership', :locals=>{:membership=>a, :display_family=>false}
+  
+  .span-16
+    .membership_invitations
+      -family.circle.pending_invitations.each do |invitation|
+        .membership_invitation_container
+          .membership_invitation
+            ="#{invitation.email} was invited #{time_ago_in_words(invitation.created_at)} ago. Invitation expires in #{time_ago_in_words(Time.now-(invitation.expires_on-Time.now))}"
+          .actions_container
+            .actions.float-right
+              -if current_user.has_role?(Circle::ADMIN_ROLE, invitation.circle) or invitation.inviter==current_user
+                =link_to "X", circle_invitation_path(invitation,:circle_id=>invitation.circle.id, :format=>:json), :remote=>true, :method=>:delete, :class=>'delete orange-text', :title=>"delete invitation"
+            .clear
+          .clear
+        .clear 
+  .span-16
+    .button_container
+      =link_to 'add adult', new_circle_invitation_path(family.circle), :remote=>true, 
+               :title=>'invite people to be part of this family', :class=>'submit_button', :id=>"invite_adult"

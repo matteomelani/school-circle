@@ -1,0 +1,14 @@
+#comment_list
+  =render :partial=>'messages/comments/comment', :collection=>@message.comments
+#comment_form_non_active
+  =text_field_tag :fake_comment, ""
+#comment_form.greyyellow-background
+  =form_for comment=Comment.new, :url => {:controller=> 'messages/comments', :action=>'create', :message_id => message.id}, :remote=>true do |f|
+    =f.hidden_field :commentable_id, :value=>message.id
+    =f.hidden_field :commentable_type, :value=>'Post'
+    =f.hidden_field :user_id, :value=>@user.id
+    #comment_author_photo
+      =image_tag @user.profile.avatar_url(:small), :alt=>"Profile Photo",:size => "40x40"
+    =f.text_area :comment
+    =f.submit "",:class=>"hide"
+    .clear

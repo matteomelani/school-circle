@@ -1,0 +1,2 @@
+$('#show_message_overlay').html("<%= escape_javascript(render :partial=>'reminders/form', :locals=>{:reminder=>@reminder}) %>");  
+load_js_for_reminder_new_page();

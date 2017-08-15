@@ -1,0 +1,19 @@
+.span-16
+  .classroom
+    =render :partial=>"classroom_digest", :locals=>{:classroom=>classroom}
+  %br
+/ .span-7.last{:style=>"padding-left: 10px"}
+/   .circle_members_container
+/     .circle_members
+/       -classroom.circle.members.each_with_index do |member,number|
+/         =image_tag member.profile.avatar_url(:small), :title=>member.profile.full_name, 
+/                   :style=>"#{"border: 1px solid orange;" if member==current_user}"
+/         -if number > 12
+/           ="...(#{classroom.circle.members.count})"
+/           -break
+/     .clear      
+/     .circle_actions{:class=>"text-align-right"}
+/       =link_to "#{classroom.circle.members.count} members ", circle_memberships_path(classroom.circle), :remote=>true,
+/                :class=>"see_members orange-text small-text", :title=>'See the list of members'
+.clear
+ 

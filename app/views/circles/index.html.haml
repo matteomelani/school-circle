@@ -1,0 +1,50 @@
+-content_for :title  do
+  ="My Circles"
+
+-content_for :user_strip do
+  =render :partial=>'shared/circles_links'
+    
+-content_for :single_panel do
+  .new_circle_form
+    .span-16
+      .element_bar
+        .element_title
+          new circle
+      .element_container
+        -# =render 'groups/form', :circle=>@circle=Circle.new, :is_ajax=>true, :request_format=>:js
+      .clear      
+    .span-7.last.last{:style=>"padding-left: 10px"}
+      .element_bar
+        .element_title
+          new circle photo
+      .element_container
+        =render :partial=>'shared/profile_picture_widget_2'
+    .clear
+    
+  .circles_container
+    .span-16
+      .element_bar
+        .element_title
+          circles list
+      .element_container
+    .span-7.last.last{:style=>"padding-left: 10px"}
+      .element_bar
+        .element_title
+          circles members
+      .element_container
+    .clear
+    .circles   
+      -@user.circles.each_with_index do |circle, index|
+        =render :partial=>'circles/circle', :locals=>{:circle=>circle, :is_ajax=>true}
+      -if @user.circles.count==0
+        .info_message
+          You are not subscribed to any circles.     
+    .span-16
+      .thick_divider_line
+    .span-7.last{:style=>"padding-left: 10px"}
+      .thick_divider_line
+
+
+-content_for :page_javascript do
+  :javascript
+    load_js_for_circles_index_page();

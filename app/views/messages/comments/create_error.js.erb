@@ -1,0 +1,5 @@
+$('#comment_form textarea').focus();
+$("#flash_region").html("<% flash.each do |key, value| %><%= escape_javascript(content_tag(:div, value, :class => "flash #{key}")) %><% end %>")
+$('#flash_region').delay(500).fadeIn('normal', function() {
+ 	$(this).delay(3500).fadeOut(4000);
+ });

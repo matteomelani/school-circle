@@ -1,0 +1,21 @@
+.circle_avatar.float-left
+  =image_tag circle.avatar_url, :size=>'80x80', :alt=>'avatar photo'
+  
+.circle_info.float-left
+  .big-text.bold-text
+    =circle.name
+  .orange-text
+    -if circle.source.school.name
+      =circle.source.school.name
+    -else
+      ="<no school info>"
+  .teacher    
+    =circle.source.teacher
+  .description
+    =circle.source.about
+  -if can? :edit, circle   
+    =link_to "edit info", url_for(:action=>'edit',:controller=>"#{circle.source_type.downcase}s",:id=>circle.source_id)
+    =" | "
+  =link_to"members", circle_memberships_path(circle), :remote=>true
+                
+.clear

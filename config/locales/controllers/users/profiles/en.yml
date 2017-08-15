@@ -1,0 +1,7 @@
+en:
+    controllers:
+        users:
+            profiles:
+                update:
+                    success: "Your profile was successfully updated."
+                    error: "Oops we cannot update your profile. Please try again."

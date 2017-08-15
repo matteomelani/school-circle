@@ -1,0 +1,10 @@
+.circle_label
+  =image_tag circle.source.avatar_url(:small)
+  .metadata
+    =link_to "#{circle.source.name}", url_for(circle.source), :class=>"circle_home_link", :title=>"Go to #{circle.name} page."
+    .members
+      =link_to "(#{pluralize(circle.members.count, 'person')})",
+               url_for(:controller=>"#{circle.source_type.pluralize.downcase}/memberships", :action=>"index",:"#{circle.source_type.downcase}_id"=>circle.source_id),
+               :class=>"see_members", 
+               :title=>'See the list of members'
+  .clear 

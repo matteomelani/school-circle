@@ -1,0 +1,79 @@
+=javascript_include_tag 'rails.validations'
+.new_child_page
+  .help_message_container
+    .help_message
+      =image_tag "lock_16x16.png"
+      All your children information is private and it is only visible to teachers and administrators of the children classrooms.
+  %br
+  .span-15
+    .element_bar
+      .element_title
+        child information
+    .element_container
+      =form_for user, :remote=>true  do |user_form| 
+        #avatar_id
+        =user_form.fields_for :profile do |p|
+          =p.hidden_field :main_role, :value=>Profile::CHILD
+          .field_container
+            =p.label :sex, "Child is a"
+            =p.select :sex, [["boy", "male"], ["girl", "female"]] ,{:prompt=> "select sex "}
+          .clear
+          .field_container
+            =p.label :first_name, "First name"
+            =p.text_field :first_name, :class=>'required'
+          .clear
+          .field_container
+            =p.label :last_name, "Last name"
+            =p.text_field :last_name
+          .clear
+          .field_container
+            =p.label :birthday , "Born on"
+            =p.date_select :birthday, :prompt => true, :start_year=>Time.now.year-1, :end_year => Time.now.year-14, :order=>[:day,:month,:year]
+          .clear
+          .field_container
+            =p.label :about , "About"
+            =p.text_area :about
+          .clear 
+          .field_container
+            =label_tag "Classrooms"
+          .clear
+        .membeships
+          -i=0
+          =user_form.fields_for :memberships, :validate=>false do |membership_form|
+            =membership_form.hidden_field :circle_id, :value=>membership_form.object.circle_id
+            -membership_form.object.roles.each do |r|
+              =hidden_field_tag "user[memberships_attributes[#{i}][roles][]", r
+            -i=i+1
+      
+        .child_classrooms
+          =user_form.fields_for :classroom_memberships do |m|
+            =render 'families/classroom_membership_fields', :f=>m
+          .new_classroom_fields
+          .clear
+        .add_classroom
+          =link_to_add_association '+add classroom', user_form, :classroom_memberships, :'data-association-insertion-node'=>'.new_classroom_fields'
+
+        .button_container
+          -if user_form.object.new_record?  
+            =user_form.submit "save", :class=>"submit_button"
+          -else
+            =user_form.submit "update", :class=>"submit_button"
+      .clear           
+  .span-7.last{:style=>"padding-left: 10px"}
+    .element_bar
+      .element_title
+        child photo
+    .element_container
+      -if user.new_record?
+        -form_div=".new_user #avatar_id"
+      -else
+        -form_div=".edit_user #avatar_id"           
+      =render :partial=>'shared/profile_picture_widget_2', :locals=>{:title_text=>"", :avatar=>user.profile.avatar, :display_in_modal_window=>true, :form_div=>form_div}
+  .clear
+  .span-15
+    .thick_divider_line
+  .span-7.last{:style=>"padding-left: 10px"}
+    .thick_divider_line
+  
+  
+  

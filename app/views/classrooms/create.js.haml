@@ -1,0 +1,12 @@
+-content_for :flash_message do
+  -flash.each do |key, value|
+    =content_tag :div, value, :class => "flash #{key}"
+    -unless flash.empty?
+      .flash_region_close
+        =image_tag('cancel.png')
+  
+$("#{escape_javascript(render :partial=>'classroom', :locals=>{:classroom=>@classroom})}").hide().prependTo('.classrooms_container .classrooms').fadeIn("slow");
+$('.classrooms .info_message').hide();
+
+$("#flash_region").html("#{escape_javascript(content_for(:flash_message))}");
+display_flash_message();

@@ -1,0 +1,11 @@
+en:
+    controllers:
+        groups:
+            create:
+                success: "The new %{circle} was successfully saved."
+                error: "Could not save %{circle}. Errors: %{errors}."
+            update:
+                success: "%{circle} information was updated."
+                error: "Could not update %{circle} information. Errors: %{errors}."
+            destroy:
+                success: " %{circle} was successfully deleted."

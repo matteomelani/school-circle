@@ -1,0 +1,94 @@
+-display_family=true if local_assigns[:display_family].nil?
+  
+=div_for membership do
+  =image_tag membership.user.profile.avatar_url, :alt=>"Photo"
+  .metadata
+    .name
+      ="#{membership.user.profile_full_name}"
+      %span.grey-text
+        = "(admin)" if membership.user.has_role?(Circle::ADMIN_ROLE, membership.circle)
+      %span.grey-text
+        = "(child)" if membership.user.profile.is_child?
+    .handle
+      ="@#{membership.user.username}"
+    .contact_info
+      .phone_numbers
+        -p=membership.user.profile
+        ="m: "
+        %span{:class=>"phone_number"}
+          #{p.mobile ? number_to_phone(p.mobile.number, :area_code=>true) : '<not set>'}
+        ="h: "
+        %span{:class=>"phone_number"}
+          #{p.home ? number_to_phone(p.home.number, :area_code=>true) : '<not set>'}
+        ="w: "
+        %span{:class=>"phone_number"}
+          #{p.work ? number_to_phone(p.work.number, :area_code=>true) : '<not set>'}
+      .address
+        ="#{p.location ? p.location.to_s : '<location not set>'}"
+    -if display_family
+      .family_info
+        -if membership.user.my_family
+          -membership.user.my_family.circle.members.each do |m|
+            -if m != membership.user
+              .member_id_container.float-left
+                =image_tag m.profile.avatar_url(:small), :alt=>"Photo"
+                .first_name
+                  =m.profile_first_name
+                .last_name  
+                  =m.profile_last_name if (m.profile_last_name != membership.user.profile_last_name)
+        -else
+          <user's family not set>
+        .clear      
+  .actions
+    %ul
+      %li
+        =link_to "Actions", "#"
+        %ul{:class=>"menu"}
+          %li
+            =link_to "Delete", "#"
+  .clear    
+ 
+/ invite new member
+/ decide_actions(current_user, membership)
+/    if current_user is admin
+/        make admin a user that is not admin
+/        revoke admin permission
+/        delete membership
+
+ 
+/ 
+/ -if current_user != membership.user and not membership.user.profile.is_child?
+/       =link_to "delete", membership_path(membership, :format=>:json), :remote=>true, 
+/                       :method=>:delete, :class=>'delete orange-text', :title=>"remove member"
+/ .clear
+/    -if display_family
+/      .member_family_container
+/        .member_family
+/           
+/ .membership_info.float-left
+/         .birthday
+/          ="Is a #{membership.user.profile.is_a_male? ? 'boy' : 'girl'}"
+/             =" born on "
+/             -if membership.user.profile.birthday
+/               ="#{membership.user.profile.birthday.strftime(I18n.t('date.formats.long'))}"
+/             -else
+/               %span.grey-text
+/                 ='<date not specified>'
+/         -else
+/           .email
+/             =membership.user.email
+/         %br                
+/         .mobile.float-left
+/           ="#{membership.user.profile.mobile.number}" if membership.user.profile.mobile
+/         %br
+/           .location.float-left
+/             ="#{membership.user.profile.location}" if membership.user.profile.location
+/         %br
+/         .clear  
+/       .actions_container
+/         .actions.float-right
+/           -if !membership.user.has_role?(Circle::ADMIN_ROLE, membership.circle) and not membership.user.profile.is_child?
+/             =link_to "make admin", "#", :class=>'edit orange-text', :title=>"make this user and administrator."
+/         .clear
+/       .clear
+/   

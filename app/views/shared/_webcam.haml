@@ -1,0 +1,21 @@
+-unique_web_cont = "webcam_html_#{unique_id}"
+-content_for unique_web_cont.to_sym do 
+  #webcam{:class=>"pp_#{unique_id}"}
+    #title_bar
+      #title
+        take a new profile photo
+      #cancel_X
+        X
+      .clear
+    #camera_image
+    #snap_button
+      snap it!
+      #status
+    #cancel_button
+      cancel
+    #save_button
+      save photo
+      
+-content_for :page_javascript do
+  :javascript
+    load_js_for_webcam_widget("#{escape_javascript(content_for(unique_web_cont.to_sym))}", "#{unique_id}");

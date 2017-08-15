@@ -1,0 +1,13 @@
+%p
+  ="Welcome #{@resource.profile_first_name},"
+  
+%p
+  You can confirm your new account through the link below:
+
+%p
+  =link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
+
+%p 
+  Thank you,
+  %br
+  The School Circle Team

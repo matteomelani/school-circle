@@ -1,0 +1,20 @@
+en:
+    activerecord:
+        models:
+            profile: Profile
+            attributes:
+                profile:
+                    name: "Name"
+        errors:
+            models:
+                profile:
+                    attributes:
+                        first_name:
+                            invalid: "invalid name format. A name can only contains letters."
+                        last_name:
+                            invalid: "invalid name format. A name can only contains letters."
+                            
+                    geocoding_failed: "Failed to geocode location: %{location}."
+                    geocoder_error: "The geocoder returned an error: %{type}: %{message}."
+                    
+                  

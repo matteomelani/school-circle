@@ -1,0 +1,15 @@
+-content_for :title  do
+  =@circle.source.display_name
+  
+-content_for :left_panel do
+  =render :partial=>"shared/circles/header", :locals=>{:circle=>@circle}
+  .memberships
+    -@memberships.each do |m|
+      =render :partial=>'shared/circles/memberships/membership', :locals=>{:membership=>m}
+
+  -content_for :page_javascript do
+    :javascript
+      load_js_for_circle_memberships_widget();
+
+-content_for :right_panel do
+  ""

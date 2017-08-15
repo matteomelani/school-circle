@@ -1,0 +1,12 @@
+en:
+    controllers:
+        families:
+            create:
+                success: "%{family_name} was successfully saved."
+                error:   "Ooops we could not save %{family_name}. Please try again if the error persist contact us."
+            update:
+                success: "Information for %{family_name} was successfully updated."
+                error:   "Ooops we could not update the information for %{family_name}. Please try again if the error persist contact us."
+            destroy:
+                success: "The %{family_name} and all its data were successfully deleted."
+                error:   "Ooops we could not delete the %{family_name} and all its data. Please try again if the error persist contact us."

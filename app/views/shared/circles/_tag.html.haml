@@ -1,0 +1,38 @@
+.circle_tag
+  =image_tag circle.avatar_url, :alt=>"Photo"
+  .circle_info
+    .title
+      ="#{circle.name}"
+      ="(#{circle.source_type})"
+    .contact
+      ="#{circle.email}/Pin"
+    .stats
+      ="People: #{circle.members.count} | Posts: #{circle.posts.count}"
+  .actions
+    -if @user.has_role?(Circle::ADMIN_ROLE, circle)
+      =link_to "view", 
+                url_for(circle.source),
+                :title=>"Go to #{circle.source.display_name} page.", 
+                :class=>'edit orange-text'
+      =" | "
+      =link_to "edit", 
+                 url_for(:action=>'edit',:controller=>"#{circle.source_type.pluralize.downcase}",:id=>circle.source_id),
+                :title=>"Edit #{circle.source.display_name}info and memberships.", 
+                :class=>'edit orange-text'
+      =" | "
+      =link_to 'delete', 
+                 url_for(:action=>'destroy', :controller=>"#{circle.source.class.name.downcase.pluralize}", 
+                 :id=>circle.source.id, :format=>:json),
+                 :remote=>true,
+                 :method=>:delete,
+                 :title=>"delete #{circle.source.display_name}" ,
+                 :confirm=>"Are you sure you want to delete this #{circle.source_type.pluralize.downcase} and all its data?",
+                 :class=>'delete orange-text'
+      =" | "
+      =link_to "people", 
+					      circle_memberships_path(circle),
+					      :title=>"Members in #{circle.source.display_name}", 
+					      :class=>'people orange-text'
+
+  .clear      
+

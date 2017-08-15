@@ -1,0 +1,10 @@
+en:
+    controllers:
+        invitations:
+            accept:
+                success: "You have have just accepted the invitation from %{inviter} to join %{circle}"
+                error:
+                    user_is_already_member: "You are already a member of the %{circle}. If you need to change you membeship contact a circle admin."
+                    invitation_not_found: "Sorry I cannot find this invitation."
+                    invitation_expired: "Ooops the invitation has expired and is no longer valid."
+                    invitation_and_user_differnt_emails: "The email address of the invitation and of your School Circle account are different. You cannot use this invitation."

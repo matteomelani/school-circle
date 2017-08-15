@@ -1,0 +1,33 @@
+-content_for :title  do
+  ="Groups"
+
+-content_for :user_strip do
+  =render :partial=>'shared/circles_links'
+    
+-content_for :single_panel do
+  .span-16
+    .element_bar
+    .element_container
+  .span-7.last.last{:style=>"padding-left: 10px"}
+    .element_bar
+    .element_container
+  .clear
+  .span-16
+    %br
+    =link_to "+ Create New Group", new_group_path 
+    %br
+    %br
+    .circles   
+      -@user.groups.each do |group|
+        =render :partial=>"shared/circles/tag", :locals=>{:circle=>group.circle}
+      .info_message{:style=>"display: none;"}
+        You are not subscribed to any group.   
+  
+  .span-16
+    .thick_divider_line
+  .span-7.last{:style=>"padding-left: 10px"}
+    .thick_divider_line
+
+-content_for :page_javascript do
+  :javascript
+    load_js_for_groups_index_page();

@@ -1,0 +1,11 @@
+-if @user.errors.any?
+  $('#add_child_form').html("#{escape_javascript(render 'users/child_form', :user=>@user)}");
+  
+-else
+  -content_for :child_membership do
+    =render :partial=>'families/child_membership', :locals=>{:membership => Membership.find_by_user_id_and_circle_id(@user.id, @user.my_family.circle)}
+
+  $('.close').click();
+  $('#child_memberships').prepend("#{escape_javascript(content_for(:child_membership))}");
+  
+  

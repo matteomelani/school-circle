@@ -1,0 +1,161 @@
+@mixin topbar_button {
+	border-radius: 4px; 
+	-moz-border-radius: 4px;  
+	-webkit-border-radius: 4px;
+	background-image: -moz-linear-gradient(50% 0%, $foreground-color, $foreground-color  10%, $mygrey-darker-2);
+	background-image: -webkit-linear-gradient(50% 0%, #E6E6E6, #E6E6E6 25%, $foreground-color);
+	background-image: -ms-linear-gradient(50% 0%, #E6E6E6,  #E6E6E6 25%, $foreground-color);
+	border-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.5);
+}
+.general_header {	
+	.logo{
+		float: left;
+	}
+	.sign_in_button{
+		float: right;
+		margin-left: 10px;	
+	}
+}
+
+.topbar {
+	height: 40px;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: 100;
+	overflow: visible;
+}
+
+.topbar, .fill {
+	background-color: $mygrey-darker-3;
+	background-repeat: repeat-x;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
+}
+
+.header{
+	padding: 5px;
+}
+.header_right_panel {
+	margin: 0 0 0 35px;
+}
+.home_link{
+	width: 38px;
+	float: right;
+	margin-right: 300px;
+	img {
+		display: block;
+		padding: 2px;
+		@include topbar_button;
+	}
+	&:hover img{
+		background: $foreground-color no-repeat center top;
+	}
+}
+.header_nav_menu {
+	float: right;
+	ul {
+		list-style: none;		
+	}
+	ul.top_link {
+		float: right;
+		padding: 0px;
+		margin: 0px;
+		li {
+			float: left;
+			text-align: center;
+			margin-left: 2px;
+			width: 100px;
+			position: relative; /*--Declare X and Y axis base for sub navigation--*/
+
+			/* Style for the top link */
+			a.submenu {
+				display: block;
+				height: 22px;
+				padding: 5px 10px 5px 5px;
+				margin: 0 0 0 0;
+				color: $black;
+				font-weight: bold;
+				@include topbar_button;
+				img {
+					display: block;
+					float:left;
+					margin-top: 0px;
+				}
+				/* Display a little triangular downarrow on the left of the top link */
+				span  {
+					position: absolute;
+					background-image: url("downarrow.png");
+					height: 6px;
+					right: 12px;
+					top: 13px;
+					width: 7px;
+				}
+				&:link {
+					color:  $black;
+				}
+				&:visited {
+					color:  $black;	
+				}
+				&:hover {
+					text-decoration: none;
+					border: 1px solid #999999;
+					background: $light-grey;
+					color: $orange;
+				}
+				&:active {
+				}
+			}
+			/* Style for dropdown menu */
+			ul.menu {
+				display: none;
+				position: absolute; /* keep menu from affecting top link */
+				top: 33px;
+				left: -30px;
+				float: left;
+				width: 130px;
+				padding: 0px;
+				margin: 0px;
+				border: 1px solid $light-grey;
+				background: white;
+				z-index: 1000;
+				box-shadow: 0 2px 4px rgba(34, 25, 25, 0.5);
+				li {
+					height: 30px;
+					width: 130px;
+					margin: 0;
+					a {
+						display: block;
+						width: 120px;
+						height: 25px;
+						padding: 0px;
+						border: none;
+						text-align: left;
+						background: white;
+						font-weight: normal;
+						padding: 5px 0px 0px 10px;
+						color:  $black;	
+					}
+					a:hover {
+						color: $orange;
+						font-weight: bold;
+						background: $super-light-grey no-repeat center top;
+						text-decoration: none;
+					}
+				}
+				li.divider {
+					border-top: 1px solid $light-grey;
+				}
+
+			}
+		}
+
+		li:hover ul { /* Display the Dropdown */
+			display: block;			
+		}
+	}
+
+}
+
+
+

@@ -1,0 +1,49 @@
+#super_actions
+  .mini_profile
+    .card
+      .avatar
+        =image_tag @user.profile.avatar_url, :alt=>"me"
+      .text
+        ="#{@user.profile.full_name}"
+    .clear        
+  .post_bar
+    #post_message_button.post_button
+      .message_link
+        =link_to image_tag('post_message_48x48.png'), new_message_path, :remote=>true, :title=>"Post a message", :id=>"post_message_link"
+      .text
+        message
+    #post_reminder_button.post_button    
+      .reminder_link
+        =link_to image_tag('post_reminder_48x48.png'), new_reminder_path, :remote=>true, :title=>"Post a reminder", :id=>"post_reminder_link" 
+      .text
+        reminder
+    #post_photo.post_button    
+      .photo_link
+        =link_to image_tag('post_photo_48x48.png'), "#", :remote=>true, :title=>"Post a reminder", :title=>"COMING SOON: Post photos" 
+      .text
+        photo
+    #post_video.post_button
+      .video_link
+        =link_to image_tag('post_video_48x48.png'), "#", :remote=>true, :title=>"Post a reminder", :title=>"COMING SOON: Post a video" 
+      .text
+        video
+    .clear 
+    %hr
+  
+  .super_action
+    =link_to "Events", "#"
+  .super_action
+    =link_to "Documents", "#"
+  .super_action
+    =link_to "Photos & Videos", "#"
+  .super_action
+    =link_to 'Invite', new_invitation_path, :remote=>true, 
+               :title=>"invite people to one of my circles", :class=>'orange-text invite'
+.circles_dashboard
+  .my_circles
+    =render :partial=>'shared/circles/my_circles', :collection=>@user.circles.map{|c| c if c.source!=@user}.compact, :as=>:circle
+
+
+-content_for :page_javascript do
+  :javascript
+    load_js_for_user_dashboard_widget();

@@ -1,0 +1,10 @@
+.documents_container
+  .element_bar
+    .element_title
+      document
+  .element_container
+    .documents
+      =render :partial=>'documents/documents'
+      =will_paginate documents
+
+.clear

@@ -1,0 +1,12 @@
+<!-- table header stuff here -->
+Total users = <%=@users.count%><br/>
+<table>
+<%= will_paginate %>
+
+<ul class="users">
+  <%= render @users%>
+</ul>
+
+<%= will_paginate %>
+
+</table>

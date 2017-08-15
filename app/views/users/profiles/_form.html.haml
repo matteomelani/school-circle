@@ -1,0 +1,47 @@
+.basic_info1
+  =form_for profile,
+            :validate=>true,
+            :url => {:controller=> 'users/profiles', :action=>'update', :user_id => profile.user_id}, 
+            :html => {:multipart => true} do |f|
+    .basic_info
+      .element_bar_thin
+        .element_title_left
+          basic info
+      .field_container
+        =f.label :name, "First name"
+        =f.text_field :first_name
+      .clear
+      .field_container
+        =f.label :name, "Last name"
+        =f.text_field :last_name
+      .clear
+      .field_container
+        =f.label :main_role, "I am a "
+        =f.select :sex, profile.sexes, :prompt=>" <select gender> "
+        =f.select :main_role, [Profile::PARENT, Profile::TEACHER], :prompt=>" <select role> "
+      .clear
+      .field_container
+        =f.label :birthday , "Born on"
+        =f.date_select :birthday,:prompt=>true, :start_year=>Time.now.year-18, :end_year=>Time.now.year-100, :order=>[:day,:month,:year]
+      .clear
+    #avatar_id
+    .contact_info
+      .element_bar_thin
+        .element_title_left
+          contact info
+      =f.fields_for :location do |l|
+        .field_container 
+          =l.label :location, "Located"
+          =l.text_area :input_string
+        .clear   
+      =f.fields_for :phone_numbers do |ph|
+        .field_container
+          =ph.label :name, "#{ph.object.name}"
+          =ph.text_field :number
+          =ph.hidden_field :name, :value=>"#{ph.object.name}"
+        .clear  
+    .element_bar_thin
+    =f.submit "Save", :class=>'button'
+    or
+    =link_to "Cancel", :back
+    .clear

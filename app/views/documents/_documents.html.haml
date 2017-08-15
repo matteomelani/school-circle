@@ -1,0 +1,21 @@
+%table
+  %tr
+    %th
+      ="File Name"
+    %th
+      ="Post Date"
+    %th
+      ="Source"
+    %th
+      ="Actions"
+
+  -@documents.each do |doc|
+    %tr
+      %td
+        =doc.asset.name
+      %td
+        =doc.updated_at.strftime(I18n.t('time.formats.default'))
+      %td
+        =doc.source_type
+      %td
+        =link_to "view", "#"

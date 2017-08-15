@@ -1,0 +1,68 @@
+.post_board
+  .welcome_widget.element
+    .element_bar
+      .element_title
+        welcome
+    .element_container
+      .welcome_message
+        ="Welcome to The School Circle, #{current_user.profile.first_name}"
+      .task{:id=>'complete_profile'}
+        .title
+          ="Complete your profile"
+        %ul
+          -if current_user.profile.main_role_nil?    
+            %li
+              ="Please tell us if you are a parent or a teacher/school admin"
+          -if current_user.profile.location.blank?
+            %li
+              ="Set your location so that we can find your schools."
+          -if current_user.profile.using_default_avatar?
+            %li    
+              ="Upload your picture so that parents and teachers can put a face to a name."
+        .link_as_button
+          =link_to 'edit profile', edit_user_profile_path(current_user)
+        .clear
+        .note
+      -if current_user.profile.is_parent? and current_user.my_family.nil?    
+        .task{:id=>'set_up_family'}
+          .title
+            ="Enter your family information"
+          %ul    
+            %li
+              ="Invite adults members"
+            %li
+              ="And complete your children profile by associating them with their classrooms."
+          .link_as_button
+            =link_to "set up my family", new_family_path, :title => "set up my family", :id=>"myfamily"
+          .clear
+          .note
+            ="Family information is visible only to teachers and school admin in your classrooms and schools."
+             
+      -elsif current_user.profile.is_teacher? and current_user.my_classrooms.empty?  
+        .task{:id=>'set_up_classrooms'}
+          .title
+            ="Set up your classrooms"
+          %ul    
+            %li
+              ="Fill up some basic info about the classroom"
+            %li
+              ="Invite parents and other teachers to join."
+            %li
+              ="Post a new message."  
+          .link_as_button
+            =link_to "set up my classroom", classrooms_path, :title => "set up my classroom"
+          .clear
+          .note
+            ="Post messages to a classroom by sending an email to the classroom secret email."        
+      -else
+      .task{:id=>'invite_other'}
+        .title
+          ="Invite people"
+        %ul    
+          %li
+            ="Invite other parents or teacher to join your classrooms"
+        .link_as_button
+          =link_to 'invite', new_invitation_path, :remote=>true, 
+                     :title=>"invite people to one of my circles", :class=>'orange-text invite'
+        .clear
+      

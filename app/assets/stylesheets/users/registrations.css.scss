@@ -1,0 +1,88 @@
+#page.registrations.new, #page.registrations.create {
+	.single_panel {
+		height: 600px;
+	}
+	.main_panel {
+		margin-top: 0px;
+	}
+	.footer .copyright {
+	    margin-right: 10px;
+	}
+}
+
+.signup {
+	@include sign_x;
+	form {  
+		height: 350px;
+	}
+}
+
+.new_user .element_container {
+	margin-top: 10px;
+}
+
+.signup_form_container select{
+	width: 100px;
+	float: left;
+	border-style:double;
+}
+
+.registration_form {
+	form {
+		margin-bottom: 30px;
+		.button {
+			margin: 20px 0 0 270px;
+		}
+	}	 
+}
+
+.linked_accounts {
+	margin: 0 0 30px 40px;
+	.authentication{
+		width: 300px;
+		padding: 0;
+		height: 32px;
+		background: $grey-yellow;
+		border-bottom: 1px $super-light-grey solid;
+		margin-bottom: 5px;
+		img {
+			float: left;
+		}
+		#provider_name {
+			padding-top: 5px;
+			display: block;
+			float: left;
+			font-weight: normal;
+			width: 100px;
+		}
+		#provider_username {
+			padding-top: 5px;
+			display: block;
+			font-weight: normal;
+			float: left;
+			font-size: 14px;
+		}
+	}
+}
+	
+.authentication_actions {
+	padding-top: 5px;
+	padding-right: 10px;
+	float: right;
+}
+.update_password_box{
+	margin-top: 10px;
+}
+.update_password{
+	display: none;
+	margin-top: 10px;
+}
+.deactivate_account_button{
+	margin: 20px 0 20px 185px;
+}
+
+.signup_welcome_message {
+	.text span {
+	   color: teal;
+	}
+}

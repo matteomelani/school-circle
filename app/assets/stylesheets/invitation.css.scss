@@ -1,0 +1,110 @@
+#invitation_page{
+	background: white;
+	width: 900px;
+	height: 600px;
+}
+@mixin invitation_input {
+	background: $grey-yellow;
+	border: none;
+	
+	padding: 3px 0 3px 5pxpx;
+}
+input#recipient{
+	@include invitation_input;
+	width: 85%;
+	padding: 2px 0px 2px 5px;
+}
+.error_message{
+	display: inline;
+}
+#new_invitation textarea {
+	@extend input#recipient; 
+	width: 95%;
+	height: 50px;
+	padding: 0 5px 5px 5px;
+}
+#new_invitation .button_container{
+	border: none;
+	margin-top: 20px;
+}
+#invitation_page{
+	border: 5px solid black;
+}
+.invitation_page_container{
+	padding:10px;
+	height: 600px;
+}
+#invitation_page label{
+	font-weight: bold;
+}
+
+.invited_people{
+	margin-top: 10px;
+	margin-bottom: 15px;
+}
+.invited_person{
+	width: 75%;
+	background: $grey-yellow;
+	padding: 0px 5px 0px 10px;
+	margin: 0 0 0 5px;
+	border-bottom: 1px $super-light-grey solid;
+}
+.invited_person input{
+	border: 0px;
+	background: $grey-yellow;
+	color: $black;
+	font-style: bold;
+	margin:0px;
+}
+.invited_person .remove:hover{
+	cursor: pointer;
+}
+
+.invitation_page_title_container{
+	background: black;
+	color: white;
+	font-size: 14px;
+}
+.invitation_page_title{
+	margin: 0px 0 3px 10px;
+}
+.connections_search_box{
+	margin-top: 20px;
+}
+.contacts_container{
+   .contacts {
+	    overflow-y: scroll;
+	    overflow-x: hidden;
+        max-height: 500px;
+      .contact{
+	    background: $grey-yellow;
+	    border-bottom: 1px $super-light-grey solid;
+	    margin: 0 0 5px 5px;
+	    padding: 5px;
+	    .name {
+		   float: left;
+		   font-size: 14px;
+		   font-weight: bold;
+	    }
+	    .invite_action{
+		   margin: 5px 5px 0 0;
+		   padding: 3px 7px 3px 7px;
+		   border: 1px solid $light-grey;
+		   background: url('overlay2.png') repeat-x scroll left top $soft-yellow;
+		   float: right;
+		   -moz-border-radius:4px;  
+		   -webkit-border-radius:4px; 
+		   border-radius:4px; color:#333;
+		   a {
+		       color: $orange;  	
+		   }
+		   font-weight: bold;
+	    }
+	    .invite_action:hover{
+		    border: 1px solid black;
+		    cursor: pointer;
+	    }
+	 
+      }
+    }
+}

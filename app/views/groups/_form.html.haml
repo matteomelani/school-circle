@@ -1,0 +1,12 @@
+=form_for @group, :validate=>true do |f|
+  #avatar_id
+  .field_container
+    =f.label :name
+    =f.text_field :name
+  .clear
+  .field_container
+    =f.label :about, 'Description'
+    =f.text_area :about
+  .clear
+  .button_container
+    =f.submit "save", :class=>'submit_button'

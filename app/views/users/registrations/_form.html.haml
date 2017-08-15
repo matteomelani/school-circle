@@ -1,0 +1,31 @@
+.registration_form
+  =form_for @user, :url=>user_account_path(@user), :validate=>true do |f|
+    .field_container
+      =f.label :username
+      =f.text_field :username
+    .clear
+    .field_container
+      =f.label :email
+      =f.text_field :email
+    .clear
+    =" "
+    .update_password_box
+      =link_to 'Change Password +', "#", :class=>'orange-text bold-text'
+    .update_password
+      .field_container
+        =f.label :current_password, 'Current'
+        =f.password_field :current_password
+      .clear
+      .field_container
+        =f.label "New"
+        =f.password_field :password
+      .clear
+      .field_container
+        =f.label "Re-type new"
+        =f.password_field :password_confirmation
+      .clear
+      .forgot_password_link
+        ="If you used your Facebook, Gmail, Yahoo or AOL account to sign in or if you do not know your current password you need to sign out, go to #{Theschoolcircle::Application.config.app_domain} and click on 'Forgot your password?' link."
+
+    =f.submit "Update", :class=>'button'
+  .clear

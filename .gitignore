@@ -1,0 +1,7 @@
+build_artifacts/*
+db/*.sqlite3
+log/*.log
+tmp/**/*
+tmp/*
+public/assets/*
+.sass-cache/

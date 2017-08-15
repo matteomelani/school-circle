@@ -1,0 +1,20 @@
+-content_for :title do
+  ="The School Circle"
+  
+-content_for :header do
+  .nothing 
+
+-content_for :single_panel do
+  .huge_logo
+    =image_tag UrlHelpers.get_aws_public_url('logo_huge.png')
+  .strip
+    .sign
+      Connecting families and schools with local business communities.
+    .notify_me_form
+      .enter_text
+        Enter your email to be notified when we launch!
+      .clear
+      =form_for :interested_people, :url => { :controller=>'pages', :action=>"create_interested_people" }, do |f|
+        =f.text_field :email
+        =f.submit "Notify Me", :class=>"submit_button"
+        .clear  

@@ -1,0 +1,14 @@
+en:
+    activerecord:
+        models:
+            phone_number: PhoneNumber
+        attributes:
+            phone_number:
+                number: "Number"
+        errors:
+            models:
+                phone_number:
+                    attributes:
+                        number:
+                            invalid: "invalid format. Use: (XXX)XXX-XXXX."
+            

@@ -1,0 +1,51 @@
+.span-16
+  .membership{:id=>"membership_#{membership.id}"}
+    .membership_info_container
+      .avatar
+        =image_tag membership.user.profile.avatar_url, :alt=>"Photo"
+      .title.black-text.bold-text.float-left
+        ="#{membership.user.profile_full_name}"
+        %span.grey-text
+          =sprintf "(%s)", (membership.user.profile.is_a_male? ? 'boy' : 'girl')
+      .actions_container.float-right
+        .actions.float-right
+          -if current_user.has_role?(Circle::ADMIN_ROLE, membership.circle) and current_user != membership.user
+            =link_to "X", user_path(membership.user,:format=>:json), :remote=>true, :method=>:delete, :class=>'delete orange-text', 
+                     :title=>'delete child', :confirm=>'Are you sure you want to delete the child info? This operation cannot be undone!'
+        .clear
+      %br  
+      .membership_info.float-left
+        .birthday.float-left
+          ="Born on #{membership.user.profile.birthday ? membership.user.profile.birthday.strftime(I18n.t('date.formats.long')) : ""}"
+        %br                
+        .mobile.float-left
+          ="#{membership.user.profile.is_a_male? ? 'His' : 'Her'} mobile number is: "
+          ="#{membership.user.profile.mobile.number}" if membership.user.profile.mobile
+        %br
+        .location.float-left
+          - if membership.user.profile.location
+            ="Lives (at/in): #{membership.user.profile.location}" 
+            %br
+        .classrooms.float-left
+          ="Classrooms:"
+        %br
+        -membership.user.classrooms.each do |classroom|
+          .classroom.float-left.margin-left-10px
+            %span.bold-text
+              ="#{classroom.name}"
+            -if classroom.school
+              ="/#{classroom.school.short_name}" 
+              ="(#{classroom.school_association_status})"
+              ="/#{classroom.school.addresses.first.city}/#{classroom.school.addresses.first.zipcode}"
+          %br
+        .clear
+      .clear    
+      .actions_container
+        .actions.float-right
+          -if current_user.has_role?(Circle::ADMIN_ROLE, membership.circle)
+            -edit_child_form=capture do 
+              =render :partial=>'users/child_form', :locals=>{:user=>membership.user}
+            =link_to 'edit','#', :'data-form'=>"#{edit_child_form}", :class=>'edit orange-text'
+        .clear
+      .clear    
+

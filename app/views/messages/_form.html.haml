@@ -1,0 +1,84 @@
+#message_view_container
+  
+  .container
+    #message_view_left_column.span-15
+      .post_button_container
+        =link_to "post", "#", :class=>'submit_button', :id=>'top_post_button'
+        =link_to "cancel", @user, :id=>"top_cancel_button", :class=>'submit_button'  
+        .clear 
+      #message
+        #message_author_photo.float-left
+          = image_tag message.sender.profile.avatar_url, :size => "50x50"
+        #message_container.float-left
+          #message_header.line-spacing-small
+            =form_for message, :validate=>true, :html=>{:class=>"attachable_form", :multipart => true } do |f|
+              =f.hidden_field(:circle_id, :value=>message.circle_id)
+              =f.hidden_field(:receiver_id, :value=>message.receiver_id)
+              -# used by javascript to append the id of attached zfile
+              #attached_zfiles 
+              =f.label "TO:"
+              #unkown_recipient_error
+              -msg_recipient_id=nil
+              -msg_recipient_type=nil
+              -msg_recipient_name=nil
+              -if message.circle_id
+                -msg_recipient_id=message.circle_id
+                -msg_recipient_type="Circle"
+                -msg_recipient_name=message.circle.display_name
+              -elsif message.receiver_id 
+                -msg_recipient_id=message.receiver_id
+                -msg_recipient_type="User"
+                -msg_recipient_name=User.find(message.receiver_id).profile_full_name     
+              -else
+                -# this is a bright new message! 
+              .message_recipient_container#message_recipient_container
+                =text_field_tag(:message_recipient, "", :'data-endpoint-all-connections'=>user_connections_path(@user, :types=>['circles','neighbours']), :'data-endpoint-circles'=>user_connections_path(@user, :types=>['circles']) )
+                -if msg_recipient_id
+                  %span.selected_recipient
+                    =msg_recipient_name
+                    =link_to "X","#",:class=>"remove",:title=>"Remove this recipient"
+                    .recipient{:style=>'display:none;'}
+                      %input{ :type=>"hidden", :name=>"recipients[][id]", :value=>"#{msg_recipient_id}"}
+                      %input{ :type=>"hidden", :name=>"recipients[][type]", :value=>"#{msg_recipient_type}"}
+              .recipients
+              =f.label "TITLE:"
+              =f.text_field :title, :value=>message.title, :class=>"large"
+              =f.text_area :content,:value=>message.content, :class=>"mceEditor"
+              %br
+              =f.hidden_field :parent_id, :value=>message.parent_id
+              =f.hidden_field :thread_id, :value=>message.thread_id
+              =f.submit "post", :class=>"submit_button", :id=>'bottom_post_button'
+              =link_to "cancel", @user, :id=>"bottom_cancel_button", :class=>'submit_button'
+        .clear
+
+    #message_view_right_column.span-6{:style=>'margin: 0px 0px 0px 20px;'}   
+      .element{:style=>'margin-top: 10px;'}
+        .element_bar
+          .element_title
+            today's deals
+        .element_container
+          #qpons
+            
+      #message_attachments.element
+        .element_bar
+          .element_title
+            attachments
+        .element_container
+          #attached_file_list
+            =form_for zfile=Zfile.new, :html => {:multipart => true} do |f|
+              =f.file_field :file
+              =f.submit "add"
+        %br
+  #message_view_footer
+    .container
+      #message_view_footer_left_column.span-15
+        .circle_members
+      #message_view_footer_right_column.span-6
+        #my_circles
+          -@user.circles.each do |pc|
+            =link_to "#{pc.name}", "#", :class=>"grey-text small-text"
+            %br
+       
+  
+#jstemplates
+  =yield :jstemplates

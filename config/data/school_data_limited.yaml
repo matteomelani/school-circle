@@ -1,0 +1,69 @@
+--- 
+0: 
+  :name: Menlo Children's Center
+  :category: private
+  :grade_range: preschool
+  :address: 
+    :street: 801 Laurel St
+    :city: Menlo Park
+    :state: CA
+    :zipcode: 94025
+    :geolocation: &id003 !ruby/object:Geokit::GeoLoc 
+      accuracy: 8
+      all: 
+      - *id003
+      city: Menlo Park
+      country: USA
+      country_code: US
+      full_address: 801 Laurel St, Menlo Park, CA 94025, USA
+      lat: 37.455106
+      lng: -122.178488
+      precision: address
+      provider: google
+      province: 
+      state: CA
+      street_address: 801 Laurel St
+      success: true
+      suggested_bounds: !ruby/object:Geokit::Bounds 
+        ne: !ruby/object:Geokit::LatLng 
+          lat: 37.4582536
+          lng: -122.1753404
+        sw: !ruby/object:Geokit::LatLng 
+          lat: 37.4519584
+          lng: -122.1816356
+      zip: "94025"
+  :phone_number: ""
+1: 
+    :name: Laurel Elementary School
+    :category: public
+    :grade_range: k-2
+    :address: 
+      :street: 95 Edge Rd.
+      :city: Atherton
+      :state: CA
+      :zipcode: 94027
+      :geolocation: &id035 !ruby/object:Geokit::GeoLoc 
+        accuracy: 8
+        all: 
+        - *id035
+        city: Atherton
+        country: USA
+        country_code: US
+        full_address: 95 Edge Rd, Atherton, CA 94027, USA
+        lat: 37.466893
+        lng: -122.17149
+        precision: address
+        provider: google
+        province: 
+        state: CA
+        street_address: 95 Edge Rd
+        success: true
+        suggested_bounds: !ruby/object:Geokit::Bounds 
+          ne: !ruby/object:Geokit::LatLng 
+            lat: 37.4700406
+            lng: -122.1683424
+          sw: !ruby/object:Geokit::LatLng 
+            lat: 37.4637454
+            lng: -122.1746376
+        zip: "94027"
+    :phone_number: ""

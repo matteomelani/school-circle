@@ -1,0 +1,18 @@
+-content_for :title do
+  ="Unlock Account"
+
+-content_for :header do
+  =render 'shared/general_header' 
+
+-content_for :single_panel do
+  .pitch
+    .title
+      Resend unlock instructions
+    .text
+      If you have signed up but somehow you have not received the instructions to confirm you email address just enter in the field 
+      below you email. We will re-send you the instructions. 
+    =form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f|
+      =f.label :email, "Email"
+      %br
+      =f.text_field :email
+      =f.submit "Resend unlock instructions", :class=>"button important"

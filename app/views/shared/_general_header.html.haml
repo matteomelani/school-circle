@@ -1,0 +1,15 @@
+/ by default it displays only the sign in button
+-sign_in_button = true if local_assigns[:sign_in_button].nil?
+-sign_up_button = false if local_assigns[:sign_up_button].nil?
+  
+.general_header
+  .container
+    .logo
+      =link_to image_tag("logo_1_bicolor_245x96.png", :alt => "The School Circle", :id=>"logo"), home_path
+    -if sign_in_button
+      .sign_in_button  
+        =link_to "Sign In", new_user_session_path, :class=>"button"
+    -if sign_up_button
+      .sign_in_button  
+        =link_to "Sign Up", new_registration_users_path, :class=>"button"
+.clear

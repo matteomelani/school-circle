@@ -1,0 +1,12 @@
+en:
+    controllers:
+        omniauth_callbacks:
+            process_callback:
+               success:
+                   link_account: "Your school circle account was successfully linked with your %{provider}'s account identified by %{account}."
+                   unlink_account: "Your school circle account was successfully linked with your %{provider}'s account identified by %{account}."
+                   sign_in: "You signed in using your %{provider} account (%{account})."
+               error:
+                   link_account: "Your school circle account could not be linked with your %{provider}'s account identified by %{account] due to the following error: %{errors}"
+                   account_already_taken: "Sorry. Another school circle account is already linked to the %{provider} account for %{account}! Log out from %{provider} and retry."
+                   sign_in: "The following errors were encountered while signing in with %{provider}'s account of user %{account}, please fix them and submit the form."

@@ -1,0 +1,12 @@
+.authentication
+  =image_tag("#{authentication.provider_name}_32.png", :size => "32x32", :alt => "#{authentication.provider_name}")
+  %span{:id=>"provider_username"}
+    -if authentication.provider_username.blank?
+      =" not linked"
+    -else  
+      ="As #{authentication.provider_username}"
+  .authentication_actions
+    -if not authentication.token.blank?
+      =link_to "X", user_authentication_path(authentication.user,authentication), :confirm => 'Are you sure you want to remove the link with this account?', :method=>:delete, :class=>"remove orange-text", :title=>"un-link account"
+    -else
+      =link_to "link now", user_omniauth_authorize_path(:"#{authentication.provider}", Authentication::SUPPORTED_SERVICES[:"#{authentication.provider_name}"]), :class=>"orange-text"  

@@ -1,0 +1,19 @@
+-content_for :flash_message do
+  -flash.each do |key, value|
+    =content_tag :div, value, :class => "flash #{key}"
+    -unless flash.empty?
+      .flash_region_close
+        =image_tag('cancel.png')
+
+$("#flash_region").html("#{escape_javascript(content_for(:flash_message))}");
+display_flash_message();
+
+-if @user.errors.any?
+  $('#add_child_form').html("#{escape_javascript(render 'users/child_form', :user=>@user)}");  
+-else
+  -membership=Membership.find_by_user_id_and_circle_id(@user.id, @user.my_family.circle)
+  -content_for :child_membership do
+    =render :partial=>'families/child_membership', :locals=>{:membership=>membership }
+
+  load_js_for_update_child_profile("#{membership.id}", "#{escape_javascript(content_for(:child_membership))}");
+  

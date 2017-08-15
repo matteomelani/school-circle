@@ -1,0 +1,4 @@
+-content_for :docs do
+  =render :partial=>'documents/index', :locals=>{:documents=>@documents}
+$('.user_feed').html("#{escape_javascript(content_for(:docs))}");
+

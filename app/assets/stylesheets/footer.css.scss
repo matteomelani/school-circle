@@ -1,0 +1,27 @@
+.footer {
+	margin-top: 20px;
+	height: 30px;
+	color: $light-grey;
+	a {
+		color: $light-grey;
+		display: block;
+		float: left;
+		margin-left: 10px; 
+	}
+	a:hover {
+		color: $black;
+	}
+	.copyright {
+		float: right;
+		margin-right: 90px; // when user is signed in the main pannel is smaller
+	}
+}
+.footer_left_panel {
+	padding-left: 15px;
+	padding-right: 5px;
+}
+.footer_right_panel {
+	text-align: right;
+}
+
+

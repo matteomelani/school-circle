@@ -1,0 +1,956 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require vendor.css 
+*/
+
+@import "common.css.scss";
+@import "header.css.scss";
+@import "footer.css.scss";
+@import "pages.css.scss";
+@import "errors.css.scss";
+@import "coming_soon.css.scss";
+@import "page_layout.css.scss";
+@import "shared/dashboard.css.scss";
+@import "users/profiles.css.scss";
+@import "users/registrations.css.scss";
+@import "users/sessions.css.scss";
+@import "user_public_profiles.css.scss";
+@import "classrooms.css.scss";
+@import "groups.css.scss";
+
+@import "families.css.scss";
+@import "circles.css.scss";
+@import "messages.css.scss";
+@import "reminders.css.scss";
+
+@import "invitation.css.scss";
+@import "avatar_widget.css.scss";
+@import "circles/memberships.css.scss";
+
+.greyed_out_botton {
+	background: $super-light-grey;
+}
+
+body {
+	font-size: 62.5%;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+	background: $grey-yellow;
+}
+
+.shadow {
+	box-shadow: 2px 2px 5px rgb(0, 255, 1);
+	-moz-box-shadow: 0px 0px 5px rgba(0, 0, 255, 1);
+}
+
+.message{
+  font-size: 11px;
+  color: red;
+}
+
+.user_reference {
+	font-weight: 600;
+	color: #f26531
+}
+.content {
+	word-wrap: break-word;
+}
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden; 
+}
+
+
+/* element is used to give shape (black bars) to any widget */
+.element { 
+}
+.element_bar_base {
+	min-height: 1.4em;
+	font-size: 0.9em;
+}
+.element_bar {
+	@extend .element_bar_base;
+	border-bottom: 5px solid black;
+}
+.element_bar_thin{
+    @extend .element_bar_base;
+	border-bottom: 1px solid $super-light-orange;
+	margin-bottom: 10px;
+}
+.element_title {
+	float: right;
+	min-height: 0.8em;
+}
+.element_title_left {
+	min-height: 0.8em;
+	padding-left: 5px;
+	color: $super-light-orange;
+}
+.element_container {
+	position: block;
+}
+.super_action {
+	border-bottom: 0.1px solid $super-light-grey;
+	background: $grey-yellow;
+}
+.super_action a {
+   width: auto;
+   color: black;
+   font-size: 1em;
+   display: block;
+   padding-left: 15px;
+   font-style: italic;
+   font-weight: bold;
+}
+.super_action a:hover {
+   color: $grey-yellow;
+   background: #f26531;
+}
+.pagination {
+	text-align: right;
+}
+.pagination a {
+	color: #f26531;
+}
+
+
+#page {
+   font-size: 1.2em;
+}
+
+#error_explanation {
+	width: 400px;
+	border: 2px solid red;
+	padding: 7px;
+	padding-bottom: 12px;
+	margin-bottom: 20px;
+	background-color: #f0f0f0;
+}
+#error_explanation h2 {
+	text-align: left;
+	font-weight: bold;
+	padding: 5px 5px 5px 15px;
+	font-size: 12px;
+	margin: -7px;
+	background-color: #c00;
+	color: #fff;
+}
+#error_explanation p {
+	color: #333;
+	margin-bottom: 0;
+	padding: 5px;
+}
+#error_explanation ul li {
+	font-size: 1.2em;
+	list-style: square;
+}
+.help_links {
+	margin-top: 10px;
+	a{ color: $orange;}
+}
+
+.new_user label, .user_new label{
+	color: $grey;
+}
+.divider{
+	border-top: 1px solid $super-light-grey;
+	width: 100%;
+	height: 10px;
+	position: relative;
+	margin-top: 5px;
+	.or{
+		position: absolute;
+		left: 120px;
+		top: -10px;
+		background: white;
+		padding: 0 10px 0 10px;
+	}
+}
+#modal_window, .modal_window {
+	display: none;
+	position: fixed;
+	height: 100%;
+    width: 100%;    
+    left: 0;
+    top: 0;        
+    z-index: 200;
+	background: none repeat scroll 0 0;
+    overflow-x: auto;
+    overflow-y: scroll;
+    font-size: 1.2em;
+}
+
+#close, .close {
+   z-index: 200;
+   color: white;
+   font-size: 1.5em;
+   padding: 10px 0 30px 0; 
+   text-align: right;
+   a {
+	color: white;
+   }
+   a:hover {
+	text-decoration: none;
+	color: white;
+   }
+}
+
+#modal_window_container, .modal_window_container {
+	height: 100%;
+	width:  820px;
+	position: absolute;
+	left: 47%;
+	margin-left: -400px;
+}
+#modal_window_container_footer, .modal_window_container_footer{
+	height: 100px;
+}
+
+#shadow {
+	display: none;
+	position: fixed;
+	width:100%;
+	height: 100%;
+	left:0;
+	top:0;
+	z-index: 100;
+	background: black repeat scroll 0 0;	
+	opacity: .75;
+	filter: alpha(opacity=75); /*IE*/
+}
+#transparent-div{
+	position: absolute;
+	padding: 15px;
+	z-index:100;
+	background: black repeat scroll 0 0;	
+	opacity: .60;
+	filter: alpha(opacity=60); /*IE*/
+	height: 100%;
+	width: 100%;
+	border-radius: 8px 8px 8px 8px;
+}
+
+
+
+
+
+#settings_nav_tabs ul
+{
+	width: 100%;
+	float: left;
+	padding: 0;
+	margin-left:0;
+	border-bottom: 1px solid #777777;
+	font: bold 12px Verdna, san-serif;
+}
+
+#settings_nav_tabs ul li
+{
+	list-style: none;
+	margin: 0;
+	float: left;
+}
+
+#settings_nav_tabs ul li a
+{
+	padding: 12px 0.5em;
+	margin-left:3px;
+	border: 1px solid #777777;
+	border-bottom: none;
+	background-color: #777777;
+	text-decoration: none;
+	background-position: 50%;
+	background-repeat: repeat-x;
+	display: block;
+	width: 7em;
+}
+
+#settings_nav_tabs ul li a:link
+{
+	color: #ee9900;
+}
+
+#settings_nav_tabs ul li a:visited
+{
+	color: #ee9900;
+}
+
+#settings_nav_tabs ul li a:link:hover, #settings_nav_tabs ul li a:visited:hover 
+{
+	color: #777777;
+	background-color: #ee9900;
+	border-color: #777777;
+}
+
+#settings_nav_tabs ul li a.selected
+{
+	background-color: white;
+	border-bottom: 1px solid white;
+	color: #ee9900;
+	margin-bottom: -1px;
+	font-size: 1.2em;
+}
+
+#settings_nav_tabs ul li a.selected:hover
+{
+	background-image: url(title-glass.png);
+	border-position: 50%;
+	background-repeat: repeat-x;
+}
+
+
+.forgot_password_link{
+	margin:10px 0 10px 80px;
+}
+// --------------------------------------------------
+//  user strip partial
+// --------------------------------------------------
+.user_strip_links{
+	margin: 0px 0 0 15px;
+	padding-top: 3px;
+}
+.user_strip_links a{
+  display: block;
+  float: left;
+  padding: 0 10px 0 10px;
+  font-size: 11px;
+}
+.user_widget{
+	margin: 0 5px 0 5px;
+	float: right;
+	img {
+		float: left;
+		margin: -3px 5px 0 0;
+       
+	}
+	.name{
+	   float: left;
+	   color: $orange;	
+	}
+}
+
+.circle_source_name{
+	padding: 10px 0 10px 3px;
+	border-bottom: 1px solid $super-light-grey;
+	font-weight: bold;
+	font-size: 14px;
+	margin-bottom: 20px;
+}
+.edit_profile label.message{
+	display: inline;
+	width: 100%;
+	float: none;
+}
+.field_container, .tag_value_pair{
+	width: 100%;
+	height: 18px;
+}
+.on_focus_message_container{
+    display: none;
+    position: relative;
+    left: 450px;
+    top: -100px;
+    background: $grey;
+    color: white;
+    width: 150px;
+    height: 100px;	
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	.on_focus_message{
+		position: absolute;
+		top: 5px;
+		left: 5px;
+	}
+}
+
+
+#family_members .value{
+	width: 535px;
+	padding-right: 10px;
+}
+.field_container label {
+	float: left;
+	display: block;
+	width: 70px;
+	text-align: right;
+	padding: 5px 10px 0 0;
+	font-size: 12px;
+	font-weight: normal;
+}
+.field_container input, .field_container select, .field_container textarea {
+	background: $grey-yellow;
+	padding: 3px 0 3px 5px;
+	border: none;
+	float: left;
+	display: block;
+}
+.tag_value_pair .tag {
+	float: left;
+	width: 70px;
+	text-align: right;
+	padding: 0px 10px 0 0;
+	font-size: 12px;
+	font-weight: normal;
+	color: grey;
+	
+}
+.tag_value_pair .value{
+	padding: 0px 0 3px 5px;
+	color: black;
+	border: none;
+	float: left;
+	display: block;
+}
+
+.divider_line{
+	border-bottom: 1px solid $super-light-grey;
+	margin-top: 20px;
+}
+.thick_divider_line {
+	border-bottom: 5px solid black;
+}
+
+
+#webcam{
+	margin: 0px 0 0 0;
+	height: 320px;
+	width: 320px;
+	border: 3px solid black;
+	position: relative;
+	background: white;
+	margin: 150px 0px 0px 280px;
+}
+#title_bar {
+  width: 320px;
+  font-size: 14px;
+  background: black;
+  color: white;
+  padding: 5px 0 5px 0px;
+}
+#title{
+	margin-left: 10px;
+	float:left;
+}
+#cancel_X{
+	float: right;
+	margin-right: 10px;
+}
+#cancel_X:hover{
+   cursor: pointer;
+}
+#snap_button{
+	width: 100%;
+	height: 20px;
+	text-align: center;
+	position: absolute;
+	bottom: 50px;
+	padding: 5px 0 5px 0;
+	opacity: .40;
+	filter: alpha(opacity=40); /*IE*/
+	background: black;
+	color: white;
+	font-size: 14px;
+}
+#save_button, #cancel_button{
+	float:right;
+	width: 100px;
+	background: grey;
+	color: white;
+	text-align: center;
+	padding: 5px 0 5px 0;
+	margin: 10px 15px 0 0px;
+	border: 1px solid black;
+}
+#save_button{
+   color: black;
+   margin: 10px 5px 0 0px;
+}
+
+
+.button_container{
+	   height: 50px;
+}	
+#user_profile_attributes_birthday_3i{
+	width: 60px;
+}
+#user_profile_attributes_birthday_2i{
+	width: 90px;
+}
+#user_profile_attributes_birthday_1i{
+	width: 70px;
+}
+.membership_invitation_container{
+	border-bottom: 1px solid $super-light-grey;
+	padding: 10px 0 10px 5px;
+	background: $grey-yellow;
+	margin-top: 5px;
+}
+.membership_invitation {
+	float: left;
+    width: 550px;
+}
+#child_membership, #child_registration{
+  clear: both;
+}
+.invitation_label{
+  padding-left: 5px;
+  background: #fbbd9d;
+}	
+
+#invite_adult:link{
+	color:white;
+	text-decoration: none;
+}
+.actions{
+	float:right;
+	margin-right: 10px;
+	padding-right: 10px;
+	font-size: 9px;
+}
+#user_profile_attributes_about{
+	width: 500px;
+}
+.add_classroom a {
+	display: block;
+	margin-left: 80px;
+   	color: black;
+} 
+.child_classrooms{
+	margin-left: 80px;
+}
+#user_actions{
+	border: 3px solid grey;
+	padding: 1em;
+}
+#user_actions img {
+	float: left;
+}
+#user_actions a {
+	padding: 0 1em 0 1em;
+	border: solid 1px grey;
+}
+
+.post_board .element_container {
+	padding: 3px 0 3px 0;
+}
+#super_actions .element_container {
+	padding: 1em 0 1em 0;
+}
+#qpon_carousel {
+	min-height: 10em;
+}
+
+.post_bar{
+	>.text{
+		color: $orange;
+		font-weight: bold;
+		font-style: italic;
+		margin-right: 5px;
+	}
+}
+.post_button {
+	float: left;
+	margin-right: 10px;
+	position: relative;
+	.text{
+		position: relative;
+		top: -8px;
+		left: 3px;
+	}
+}
+#post_photo{
+	opacity: 0.4;
+	filter:alpha(opacity=40);
+	.text{
+		filter:alpha(opacity=40);
+	}
+}
+#post_video {
+    margin-right:0px;
+    opacity: 0.4;
+    filter:alpha(opacity=40);
+	.text{
+		filter:alpha(opacity=40);
+	}
+}
+
+.uploadifyQueueItem {
+	font: 11px Verdana, Geneva, sans-serif;
+	border: 2px solid #E5E5E5;
+	background-color: #F5F5F5;
+	margin-top: 5px;
+	width: 100%;
+}
+.uploadifyError {
+	border: 2px solid #FBCBBC !important;
+	background-color: #FDE5DD !important;
+}
+.uploadifyQueueItem .cancel {
+	float: right;
+}
+.uploadifyProgress {
+	background-color: #FFFFFF;
+	border-top: 1px solid #808080;
+	border-left: 1px solid #808080;
+	border-right: 1px solid #C5C5C5;
+	border-bottom: 1px solid #C5C5C5;
+	margin-top: 10px;
+	width: 100%;
+}
+.uploadifyProgressBar {
+	background-color: #0099FF;
+	width: 1px;
+	height: 3px;
+}
+#message_attachments .element_bar {
+ 	margin-bottom: 10px;
+}
+form#new_zfile{
+	margin-top: 10px;
+}
+.attached-file {
+	background: $grey-yellow; 
+    border-bottom: 1px solid lightgrey;
+    padding-left: 5px;
+    overflow: hide;
+    span#delete {
+	  width: 10px;
+	  height: 15px;
+	}
+}
+span#delete:hover{
+	cursor: pointer;
+}
+span#delete {
+	background: url('images/cancel.png');
+	display: block;
+	float: right;
+	padding-right: 5px;
+}
+#reminder_container, #reminder_recipient{
+  width: 452px;	
+}
+#new_reminder textarea { 
+    padding: 0;
+    margin: 0;
+    width:452px; 
+    height: 133px;
+    resize: none;
+    font-size: 14px;
+    font-family: "Lucida Grande";
+}
+
+
+#feed_item_title_box { clear: both; border-top:  solid 0.5px steelblue; }
+
+#feed_item_controls_box
+{ 
+	float: right;
+	font-align: left;
+	font-size: 0.8em;
+	font-family: helvetica;
+}
+
+#schools_browse_box
+{
+	background: whitesmoke;
+	height: 250px;
+	width:  320px;
+	border: solid 2px lightslategrey;
+	padding: 5px;
+	clear: both;
+	margin-top:280px;
+}
+
+#error404
+{
+	border: 5px solid grey;
+	color: red; 
+	padding: 50px;
+	text-align: center; 
+	font-weight: 700;
+	margin-bottom: 50px;
+	width: 25em;
+	margin-left: auto;
+	margin-right: auto; 
+}
+#error404 h1
+{
+	color: red;
+}
+
+
+
+//--------------------------------------------------------------------------------------
+//  user show   
+//--------------------------------------------------------------------------------------
+#my_circle_dashboard{
+	a {
+		color: $grey;
+	}
+}
+
+//--------------------------------------------------------------------------------------
+//  user show page, circle members modal window   
+//--------------------------------------------------------------------------------------
+#members_page{
+	background: white;
+	width: 920px;
+	min-height: 500px;
+	padding: 30px 15px 0 15px;
+}
+
+
+//--------------------------------------------------------------------------------------
+//  resitrations new (users/signup)
+//--------------------------------------------------------------------------------------
+.vertical_separator{
+	border: 1px solid grey; 
+	height:300px; 
+	width: 1px;
+}
+.or {
+	position: absolute;
+	top: 218px;
+	left: 293px; 
+	background: white; 
+	color: grey; 
+	height: 25px;
+	padding: 10px 0 10px 0;
+}
+
+//--------------------------------------------------------------------------------------
+//  messages new (users/show)
+//--------------------------------------------------------------------------------------
+#new_message{
+   width: 512px;
+   input[type=text] {
+       background: $grey-yellow;
+	   width: 100%;
+	   height: 2em;
+       margin:0 0 0.5em 0;
+   }
+}
+#new_massage_page{
+	background:white;
+	width: 930px;
+	padding-top: 10px;
+}
+.ui-autocomplete-category {
+		font-weight: bold;
+		padding: 0 0 0 0;
+		margin: 10px 0 2px 0;
+		line-height: 1.0;
+}
+.message_recipient_container{
+	width: 505px;
+	border: 1px solid $super-light-grey;
+	background: $grey-yellow;
+	height: 25px;
+    margin:0 0 0.5em 0;
+    padding: 5px 0px 5px 5px;
+    span {
+	    display:block; 
+	    margin:0 3px 3px 0; 
+	    padding:3px 20px 4px 8px;  
+		position: relative; 
+		float:left; 
+		background: #CCC;  
+		border:1px solid #333; 
+		-moz-border-radius:7px;  
+		-webkit-border-radius:7px; 
+		border-radius:7px; 
+		color:#333;  
+		font:normal 11px Verdana, Sans-serif;
+    }
+    span a{
+	  color: $orange; 
+	  position: absolute;
+	  right: 8px;
+	  top: 2px;
+	  font: bold 12px Verdana, Sans-serif;
+	  text-decoration: none;
+    }
+    
+}
+input#message_recipient:focus {
+	box-shadow: 0 0 0;
+	-webkit-box-shadow: 0 0 0;
+	-moz-box-shadow: 0 0 0;
+}
+.blue_glow {
+	box-shadow: 0 0 5px rgba(0, 0, 255, 1);
+	-webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 1);
+	-moz-box-shadow: 0 0 5px rgba(0, 0, 255, 1);
+}
+.post_button_container{
+	border-bottom: 1px solid $super-light-grey;
+	margin: 0px 0 10px 0;
+	padding-bottom: 5px;
+}
+#top_post_button{
+  margin: 0px 10px 0px 10px;
+  font-size: 11px;
+}
+#top_cancel_button{
+  margin: 0px 0px 0px 0px;
+  font-size: 11px;
+}
+#bottom_post_button{
+  margin: 0px 0px 0px 10px;
+  height: 24px;
+  font-size: 11px;
+}
+#bottom_cancel_button{
+  margin: 0px 0px 0px 0px;
+  height: 18px;
+  font-size: 11px;
+}
+#attached_file_list {
+	position: relative;
+	input{
+		display: none
+    }
+    object#zfile_fileUploader {
+    }
+}
+
+#new_message input#message_recipient{
+	width: 250px;
+	border: none;
+}
+input#message_recipient:focus {
+	box-shadow: 0 0 0 ;
+	-webkit-box-shadow: 0 0 0;
+	-moz-box-shadow: 0 0 0;
+}
+
+#new_message input[type=text]#message_title{
+   	width: 505px;
+    margin-bottom: 1.5em;
+    padding: 0px 0px 0px 5px;
+    border: 1px solid $super-light-grey;	
+}
+
+/*Resize tinyMCE editor*/
+#new_message textarea {
+  width: 500px;	
+  height: 400px;
+}
+#qpons{
+	margin:25px 0px 70px 0;
+}
+
+
+//--------------------------------------------------------------------------------------
+//  welcome widget
+//--------------------------------------------------------------------------------------
+
+.welcome_message{
+	padding: 5px;
+	font-size: 18px;
+	color: $grey;
+	border-bottom: 1px solid $super-light-grey;
+	margin: 10px 0 0 0px;
+}
+.task{
+	margin: 10px 0 10px 0;
+	border-bottom: 1px solid $super-light_grey;
+	background: $soft-yellow;
+	padding: 20px;
+	color: $grey;
+	.title{
+		color: black;
+		margin: 10px;
+		font-weight: bold;
+		font-size: 14px;
+	}
+	.note{
+		margin: 10px 0 0 0;
+		
+	}
+}
+.link_as_button{
+  background: #F26531;
+  color: white;
+  margin: 10px 0 0 0;
+  padding: 3px 20px 3px 20px;
+  border: none;
+  float:left;
+  margin-left: 10px;
+  a { color: white; }
+}
+
+
+.new_child_page{
+	.help_message{
+		@include info_message;
+	}
+}
+
+
+//--------------------------------------------------------------------------------------
+//  school index page
+//--------------------------------------------------------------------------------------
+.schools.index{
+	.school{
+		background: $grey-yellow;
+		padding: 10px;
+		border-bottom: 1px solid $super-light-grey;
+		margin: 10px 0 0 0;
+		.school_name{
+			color: $black;
+			font-weight: bold;
+		}
+		.school_grade{
+			color: $grey;
+			font-weight: bold;
+			margin: 0 10px 0 0;
+		}
+		.school_address{
+			padding-left: 10px;	
+		}
+		.school_info{
+			margin-left: 10px;
+			float: left;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------------------------------
+//  class show page
+//--------------------------------------------------------------------------------------
+.classroom_card {
+	.avatar {
+		margin-right: 10px;
+	}
+	.title{
+		font-size: 30px;
+	}
+	.school{
+		color: $light-orange;
+	}
+}
+
+
+//--------------------------------------------------------------------------------------
+//  documents
+//--------------------------------------------------------------------------------------
+.document{
+	.file_name, .post_date, source{
+		float: left;
+		margin-left: 20px;
+	}
+	.actions{
+		float: right;
+	}
+	height: 40px;
+	border: solid 1px red; 
+	
+}

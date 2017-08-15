@@ -1,0 +1,5 @@
+=render :partial=>'circles/show', :locals=>{:circle=>@group.circle}
+
+-content_for :page_javascript do
+  :javascript
+    load_js_for_users_show_page();

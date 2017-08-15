@@ -1,0 +1,11 @@
+en:
+    controllers:
+        users:
+            show:
+                success: "Your profile was successfully updated."
+                first_signin_message: "%{user_first_name} Welcome to The School Circle."
+                redirect_to_edit_profile: "Tell us a bit about yourself: complete your profile and click save."
+                redirect_to_edit_family: "Awesome! Now tell us a bit about your family. Invite adults and add you children information."
+            update:
+                success: "You have successfully update information for %{user_full_name}."
+                error: "Oops we could not update the information for user %{user_full_name}. We encoutered the following errors: %{errors}"

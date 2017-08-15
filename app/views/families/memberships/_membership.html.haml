@@ -1,0 +1,37 @@
+-display_family=true if local_assigns[:display_family].nil?
+  
+=div_for membership do
+  =image_tag membership.user.profile.avatar_url, :alt=>"Photo"
+  .metadata
+    .name
+      ="#{membership.user.profile_full_name}"
+      %span.grey-text
+        = "(admin)" if membership.user.has_role?(Circle::ADMIN_ROLE, membership.circle)
+      %span.grey-text
+        = "(child)" if membership.user.profile.is_child?
+    .handle
+      ="@#{membership.user.username}"
+    .contact_info
+      .phone_numbers
+        -p=membership.user.profile
+        ="m: "
+        %span{:class=>"phone_number"}
+          #{p.mobile ? number_to_phone(p.mobile.number, :area_code=>true) : '<not set>'}
+        ="h: "
+        %span{:class=>"phone_number"}
+          #{p.home ? number_to_phone(p.home.number, :area_code=>true) : '<not set>'}
+        ="w: "
+        %span{:class=>"phone_number"}
+          #{p.work ? number_to_phone(p.work.number, :area_code=>true) : '<not set>'}
+      .address
+        ="#{p.location ? p.location : '<location not set>'}"
+      .clear      
+  .actions
+    %ul
+      %li
+        =link_to "Actions", "#"
+        %ul{:class=>"menu"}
+          %li
+            =link_to "Delete", "#"
+  .clear    
+ 

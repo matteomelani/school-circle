@@ -1,0 +1,7 @@
+en:
+    mailers:
+        user_mailer:
+           family_invitation:
+               subject: "%{inviter_full_name} has invited you to join the %{circle_name}"
+           circle_invitation:
+               subject: "%{inviter_full_name} has invited you to join the %{circle_name}"        

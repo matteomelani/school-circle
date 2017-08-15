@@ -1,0 +1,53 @@
+-if local_assigns[:is_ajax].nil?
+  -is_ajax=false
+
+-if local_assigns[:request_format].nil?
+  -request_format=:html 
+  -if is_ajax
+    -request_format=:json
+  
+=form_for classroom, :remote=>is_ajax, :format=>request_format, :validate=>true do |form| 
+  .field_container
+    =form.label :name, "Name"
+    =form.text_field :name
+  .clear
+  .field_container
+    =form.label :school, "School"
+    =form.select :school_id, School.all.collect{|s| [s.name, s.id] }, {:include_blank => 'None',
+                 :prompt => 'select'}
+  .clear
+  .field_container
+    =form.label :school_year, "School year"
+    =form.select :school_year, ['2011-2012','2012-2013','2013-2014'], {:include_blank=>'None',:prompt=>'select'}
+  .clear
+  .field_container
+    =form.label :grade_level, "Grade"
+    =form.select :grade_level, Classroom::GRADE_LEVEL,  {:prompt=>'select'}
+  .clear
+  .field_container
+    =form.label :teacher, "Teacher"
+    -if form.object.teacher.blank?
+      =form.text_field :teacher, :value=>current_user.profile_full_name
+    -else
+      =form.text_field :teacher
+  .clear
+  -unless classroom.new_record?
+    =form.fields_for :circle, :validate=>false do |c|
+      .field_container
+        =c.label :random_name, "Email"
+        =c.text_field :random_name, 
+                      :disabled=>true,
+                      :value=>"#{form.object.circle.random_name}@post.#{Theschoolcircle::Application.config.app_domain}",
+                      :style=>"width: 320px;"
+      .clear
+      .field_container
+        =c.label :pin, "Pin"
+        =c.text_field :pin,
+                      :disabled=>true, 
+                      :value=>"#{form.object.circle.pin}",
+                      :style=>"width: 320px;"
+      .clear
+  #avatar_id
+  =form.submit "Save", :class=>"button"
+  or   
+  =link_to "Cancel", :back

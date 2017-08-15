@@ -1,0 +1,18 @@
+#super_actions.element
+  .element_bar
+  .element_container
+    =render 'shared/post_bar'
+    %hr
+    .super_action
+      =link_to "Feed", user_post_board_path(current_user)
+    .super_action
+      =link_to "Documents", user_documents_path(current_user), :remote=>true
+    .super_action
+      =link_to "People", classrooms_path
+    .super_action
+      =link_to 'Invite', new_invitation_path, :remote=>true, 
+               :title=>"invite people to one of my circles", :class=>'orange-text invite'    
+    
+-content_for :page_javascript do
+  :javascript
+    load_js_for_user_dashboard_widget();

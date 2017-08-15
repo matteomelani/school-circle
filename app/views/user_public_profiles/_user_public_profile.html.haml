@@ -1,0 +1,13 @@
+.user_tag
+  =image_tag user.profile.avatar_url(:large)
+  .user_info
+    .title
+      =user.profile_full_name      
+    .contact
+      ="@#{user.username}"
+    .stats
+      ="People"
+  .actions
+  .clear  
+
+

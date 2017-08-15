@@ -1,0 +1,7 @@
+.nested-fields
+  .classroom_membership_fields
+    =f.hidden_field :user_id, :value=>f.object.user_id
+    .field_container
+      =f.select :circle_id, Classroom.all.collect{|c| ["#{c.name}/#{c.school.short_name if c.school}/#{c.school.addresses.first.city if c.school}/#{c.school.addresses.first.zipcode if c.school}", c.circle.id] }, { :prompt => ' select classroom '}
+      =link_to_remove_association "X", f
+    .clear

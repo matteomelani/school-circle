@@ -1,0 +1,12 @@
+=content_for :title  do
+  ="#{circle.name} Home"
+
+=content_for :left_panel do
+  =render :partial=>'shared/dashboard'
+  
+=content_for :right_panel do
+  =render :partial=>"shared/circles/header", :locals=>{:circle=>circle}
+  .post_board.element
+    =render :partial=>'circles/feed_item', :collection=>@feed_items
+    
+

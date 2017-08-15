@@ -1,0 +1,24 @@
+#page.sessions.new {
+	.main_panel {
+		margin-top: 0px;
+	}
+	.footer .copyright {
+	    margin-right: 10px;
+	}
+}
+
+#page.sessions.new {
+	.single_panel {
+		height: 600px;
+	}
+}
+
+.signin {
+	@include sign_x;
+	form {
+		height: 200px;
+		input.button {
+			margin: 10px 0 0 190px;
+		}
+	}
+}

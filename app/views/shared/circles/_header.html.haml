@@ -1,0 +1,35 @@
+-source_header_partial = nil unless local_assigns[:source_header_partial]
+.circle_header
+  =image_tag circle.avatar_url, :alt=>"Photo"
+  .circle_info
+    .title
+      ="#{circle.source.display_name}"
+    .contact
+      ="#{circle.email}"
+    .stats
+      ="People: #{circle.members.count} | Posts: #{circle.posts.count} | Pin: #{circle.pin}"
+  .actions
+    -if @user.has_role?(Circle::ADMIN_ROLE, circle)
+      =link_to "edit", 
+                url_for(:action=>'edit', :controller=>"/#{circle.source_type.pluralize.downcase}", :id=>circle.source_id),
+                :title=>"Edit #{circle.source.display_name}info and memberships.", 
+                :class=>'edit orange-text'
+      / =" | "
+      /       =link_to 'delete', 
+      /                  url_for(:action=>'destroy', :controller=>"/#{circle.source.class.name.downcase.pluralize}", 
+      /                  :id=>circle.source.id, :format=>:json),
+      /                  :remote=>true,
+      /                  :method=>:delete,
+      /                  :title=>"delete #{circle.source.display_name}" ,
+      /                  :confirm=>"Are you sure you want to delete this #{circle.source_type.pluralize.downcase} and all its data?",
+      /                  :class=>'delete orange-text'
+      / =" | "
+      /       =link_to "people", 
+      /                 url_for(:controller=>"/#{circle.source_type.pluralize.downcase}/memberships", :action=>"index", :"#{circle.source_type.downcase}_id"=>circle.source_id),
+      /                 :title=>"Members in #{circle.source.display_name}", 
+      /                 :class=>'people orange-text'
+
+  .clear
+
+-if source_header_partial
+  =render :partial=>source_header_partial, :locals=>{:source=>circle.source}

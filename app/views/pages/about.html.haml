@@ -1,0 +1,53 @@
+-content_for :title do
+  ="About"
+
+-content_for :header do
+  =render 'shared/general_header' 
+      
+-content_for :single_panel do
+  .pitch
+    .title
+      About Us
+    .text
+      The School Circle is crafted with love and care by Matteo Melani in Menlo Park CA.
+      %br
+      %br
+      ="Say hi to us "
+      =mail_to "hi@theschoolcircle.com"
+      ="or tweet "
+      =link_to "@theschoolcircle" , "www.twitter.com/theschoolcircle.com" 
+  .clear
+  .team
+    .title
+      Team
+    .card
+      .avatar  
+        =image_tag "user_medium.png"
+      .text
+        Matteo Melani
+        %br
+        =link_to "@matteomelani", "#"
+    .card
+      .avatar
+        =image_tag "user_medium.png"
+      .text
+        Laurent Devonue
+        %br
+        =link_to "@matteomelani", "#"
+  .team
+    .title
+      Advisors
+    .card
+      .avatar  
+        =image_tag "user_medium.png"
+      .text
+        Marc Phillips
+        %br
+        =link_to "@matteomelani", "#"
+    .card
+      .avatar
+        =image_tag "user_medium.png"
+      .text
+        Amy Staas
+        %br
+        =link_to "@matteomelani", "#"

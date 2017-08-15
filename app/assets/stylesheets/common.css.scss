@@ -1,0 +1,414 @@
+// To find out code for darker or lighter colors go to: 
+// http://javascriptsource.com/miscellaneous/true-color-darkening-and-lightening.html
+
+
+
+//--------------------------------------------------------------------------------------
+//  Colors
+//--------------------------------------------------------------------------------------
+
+$white:  #FFFFFF;
+$black:  #524D4D;
+$blue:   #08b5fb;
+$green:  #46a546;
+
+
+$yellow: #ffc40d;
+
+$foreground-color: #B1B1A7;
+$mygrey: #B1B1A7;
+$mygrey-darker-7: #353532;
+$mygrey-darker-3: #7C7C75;
+$mygrey-darker-2: 	#8E8E86;
+$mygrey-darker-1: #9F9F96;
+$background-color: #F2EFDE;
+
+/* Red*/
+$red:           #9d261d;
+$lighter-1-red: #A73C34;
+$lighter-2-red: #B1514A;
+$lighter-3-red: #BA6761;
+$lighter-4-red: #C47D77;
+
+/* Orange */
+$orange: #f26531;
+$quasi-light-orange: #f58454;
+$light-orange: #f8a077;
+$super-light-orange: #fbbd9d;
+
+/* Grey */
+$grey: #6A737B;
+$light-grey: #B1B1A7;
+$super-light-grey: #CCC;
+$white-grey: #DDDDDD;
+
+/*  End Official Colors  */
+
+$soft-yellow: #f8f7c2;
+
+/*alternative $grey-yellow:*/
+$alt-grey-yellow: #f2f1eb;
+
+/* possible color scheme: http://wordnet.princeton.edu */
+/*old grey-yellow #f1f3ea*/
+$grey-yellow: #F2EFDE;
+$grey-yellow-darker08: #edf0e5;
+$grey-yellow-darker05: #e4e8d8;
+$grey-yellow-darker04: #dee2d0; 
+$grey-yellow-darker03: #d5dac4; 
+$grey-yellow-darker01: #a1aa86;
+$grey-yellow-darker005: #75805b;
+
+/*$orange: #f89406;*/
+$pink: #c3325f;
+$purple: #7a43b6;
+
+
+//--------------------------------------------------------------------------------------
+//  Fonts
+//--------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------
+//  Links
+//--------------------------------------------------------------------------------------
+a {
+	color: $orange;
+	text-decoration: none;
+}
+
+a:hover {
+	color: $orange;
+	text-decoration: none;
+}
+
+
+//--------------------------------------------------------------------------------------
+//  Input Fields
+//--------------------------------------------------------------------------------------
+@mixin input_field {
+	font-size: 14px;
+	    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+	color: $black;
+    background: $white;
+	padding: 5px 0px 5px 5px;	
+	border-radius: 4px; 
+	-moz-border-radius: 4px;  
+	-webkit-border-radius: 4px;
+	-moz-border-bottom-colors: none;
+	-moz-border-image: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	background: none repeat scroll 0 0 #FFFFFF;
+	border-color: #929293 #AEAEAE #BDBDBD;
+	border-left: 1px solid #AEAEAE;
+	border-right: 1px solid #AEAEAE;
+	border-style: solid;
+	border-width: 1px;
+	box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.2) inset, 0 1px rgba(255, 255, 255, 0.3)
+}
+input[type=text], input[type=password] {
+	width: 250px;
+	height: 18px;
+	@include input_field;
+}
+
+input:focus {
+	box-shadow: 0 0 5px rgba(0, 0, 255, 1);
+	-webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 1);
+	-moz-box-shadow: 0 0 5px rgba(0, 0, 255, 1);
+}
+
+textarea {
+   	@include input_field;	
+    resize: none;
+	height: 90px;
+}
+select {
+	@include input_field;
+}
+
+//--------------------------------------------------------------------------------------
+//  Input Fields Errors
+//--------------------------------------------------------------------------------------
+
+.field_with_errors {
+    position: relative;
+    float: left;
+    input {
+	  border: 2px solid red;
+    }
+	label.message {
+		position: absolute;
+		top: 7px;
+		right: -300px;
+		color: $background-color; 
+		text-align: left;
+		display: block;
+		width: 285px;
+		background: $lighter-4-red;
+		border: 1px solid $red;
+		padding: 3px 5px 3px 5px;
+		font-size: 14px;	
+	}
+}
+
+//--------------------------------------------------------------------------------------
+//  Buttons (links and submit inputs)
+//--------------------------------------------------------------------------------------
+
+@mixin button {
+	height: 30px;
+	font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+	font-size: 13px;
+	padding: 7px 12px 7px 12px;
+	color: $black;
+	font-weight: bold;
+	border: 1px solid $light-grey;
+	border-radius: 4px; 
+	-moz-border-radius: 4px;  
+	-webkit-border-radius: 4px;
+	background-image: -moz-linear-gradient(50% 0%, #FFFFFF, #FFFFFF 25%, #E6E6E6);
+	background-image: -webkit-linear-gradient(50% 0%, #FFFFFF, #FFFFFF 25%, #E6E6E6);
+	background-image: -ms-linear-gradient(50% 0%, #FFFFFF, #FFFFFF 25%, #E6E6E6);
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	line-height: 19px;
+	&:hover {
+	    text-decoration: none;
+		border: 1px solid #999999;
+		@include button_shadow;
+	}
+}
+
+@mixin button_shadow {
+	box-shadow: 0 0px 3px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 0 0px 3px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 0px 3px rgba(0, 0, 0, 0.5);
+}
+
+@mixin button_important {
+	@extend button;
+	font-size: 18px;
+	background: $orange;
+	color: $background-color;
+	background-image: -moz-linear-gradient(center top , $orange, $orange 25%, #CB4909);
+	background-image: -webkit-linear-gradient(center top , $orange, $orange 25%, #CB4909);
+	background-image: -ms-linear-gradient(center top , $orange, $orange 25%, #CB4909);
+}
+
+.submit_button, .cancel_button{
+	color: white;
+	float: right;
+	margin: 10px 0 0 0;
+	padding: 3px 20px 3px 20px;
+	border: 1px solid $orange;
+    background: $orange;
+	-moz-border-radius:4px;  
+	-webkit-border-radius:4px; 
+	border-radius:4px;
+	height: 18px;
+	font-size: 12px;
+}
+.submit_button:hover, .cancel_button:hover{
+	border: 1px solid black;
+	cursor: pointer;
+}
+.submit_button {
+	height: 26px; /* HACK: the sumbit_button and the .cancel_button do not interpret the height command in the same way */
+	margin-left: 10px;
+}
+
+
+a.button {
+	@include button;
+}
+
+a.button:hover {
+	@include button;
+}
+
+a.button.danger {
+	@extend button;
+	font-size: 18px;
+	background: $orange;
+	color: $background-color;
+	background-image: -moz-linear-gradient(center top , $lighter-4-red, $lighter-2-red 25%, $red);
+	background-image: -webkit-linear-gradient(center top ,$lighter-4-red, $lighter-2-red 25%, $red);
+	background-image: -ms-linear-gradient(center top , $lighter-4-red, $lighter-2-red 25%, $red);
+}
+
+a.button.important {
+	@include button_important
+}
+
+.link_as_button {
+	display: block;
+	color: white;
+	padding: 5px 10px 5px 10px;
+	width: 150px;
+	text-align: center;
+	-moz-border-radius: 4px;  
+	-webkit-border-radius: 4px; 
+	border-radius: 4px;
+}
+.link_as_grey_button {
+	@extend .link_as_button;
+	background: $grey;
+}
+
+input[type="submit"] {
+	cursor: pointer;
+}
+
+input[type="submit"].button {
+  @include button;	
+  height: 36px;
+}
+
+input[type="submit"].button.important {
+	@include button_important
+}
+
+input::-moz-focus-inner /*Remove button padding in FF*/
+{ 
+    border: 0;
+    padding: 0;
+}
+
+
+//--------------------------------------------------------------------------------------
+//  labels
+//--------------------------------------------------------------------------------------
+
+@mixin label_shadow {
+	box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.5);
+}
+
+@mixin label_corners {
+	border-radius: 0 0 5px 5px; 
+	-moz-border-radius: 0 0 5px 5px;  
+	-webkit-border-radius: 0 0 5px 5px;
+}
+
+@mixin label_shadow_and_corners {
+  @include label_shadow;
+  @include label_corners;	
+}
+
+a.tag_button {
+	height: 30px;
+	font-size: 13px;
+	padding: 7px 12px 7px 12px;
+	color: $black;
+	font-weight: bold;
+	border: 1px solid $light-grey;
+	border-radius: 0 0 5px 5px; 
+	-moz-border-radius: 0 0 5px 5px;  
+	-webkit-border-radius: 0 0 5px 5px;
+	background-image: -moz-linear-gradient(50% 0%, #FFFFFF, #FFFFFF 25%, #E6E6E6);
+	background-image: -webkit-linear-gradient(50% 0%, #FFFFFF, #FFFFFF 25%, #E6E6E6);
+	background-image: -ms-linear-gradient(50% 0%, #FFFFFF, #FFFFFF 25%, #E6E6E6);
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+a.tag_button:hover {
+	text-decoration: none;
+	color: $black;
+	border: 1px solid #999999;
+	@include label_shadow;
+}
+
+
+
+//--------------------------------------------------------------------------------------
+//  titles
+//--------------------------------------------------------------------------------------
+
+@mixin title {
+	font-size: 30px;
+	font-weight: bold;
+	line-height: 30px;
+	color: $background-color;
+	border-bottom: 1px solid $super-light-grey;
+	margin: 10px 0 20px 0;
+	padding-bottom: 10px;
+}
+
+
+//--------------------------------------------------------------------------------------
+//  text
+//--------------------------------------------------------------------------------------
+
+@mixin text {
+	font-size: 19px;
+	color: $black;
+}
+
+//--------------------------------------------------------------------------------------
+//  boxes
+//--------------------------------------------------------------------------------------
+
+@mixin box_shadow {
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+	-webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+	-moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+}
+
+
+//--------------------------------------------------------------------------------------
+//  images
+//--------------------------------------------------------------------------------------
+
+.avatar {
+	float: left;
+}
+
+//--------------------------------------------------------------------------------------
+//  standard card (layout like driving license: avatar left, text right)
+//--------------------------------------------------------------------------------------
+
+.card {
+  	float: left;
+    height: 58px;
+	width: 230px;
+	.avatar {
+		margin: 5px;
+	}
+	.text {
+		margin: 5px 0 5px 5px;
+		float: left;
+	}
+}
+
+//--------------------------------------------------------------------------------------
+// common to Sign in and Sign up pages (sessions and registrations controllers)
+//--------------------------------------------------------------------------------------
+
+@mixin sign_x {
+	form {  
+		width: 270px;
+		input{ display: block; }
+		input.button {
+			margin: 20px 0 0 140px;
+		}
+	}
+	width: 350px;
+	background: $foreground-color;
+	padding: 20px;
+	margin-left: 20px;
+	@include label_shadow_and_corners;
+	.title {
+		@include title
+	}	
+	.third_party {
+		border-top:1px solid $super-light-grey;
+		padding-top: 10px;
+		.text {
+			color: $grey;
+			padding: 5px;
+			font-weight: bold;
+		}
+	}
+}

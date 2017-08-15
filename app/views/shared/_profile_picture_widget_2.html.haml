@@ -1,0 +1,32 @@
+-# unique id used to tag divs. This is to make the widget work when there are multiple widget on the same page. 
+-uid = "uid_#{Time.now.usec.to_s}"
+
+.avatar_widget_wrapper
+  .avatar_widget{:id=>"#{uid}"}  
+    =image_tag has_avatar.avatar_url(:large), :alt=>"Photo", :class=>"profile_picture"
+    =image_tag has_avatar.default_avatar_url, :style=>"display: none;", :class=>"default_avatar"
+    .button_container2
+      =form_for zfile=Zfile.new, :html => {:multipart => true} do |f|
+        =f.file_field :zfile, :id=>"zfile_asset#{uid}", :class=>'zfile_asset'
+        =f.submit "Change", :class=>"button"
+        .clear
+    .clear
+    -unless has_avatar.using_default_avatar?
+      =link_to "Remove pic.", zfile_path(has_avatar.avatar), :remote=>true, :method=>:delete, :class=>'remove_avatar'
+    .on_focus_message_container2
+      .on_focus_message2
+        Unsaved new photo.
+        %br
+        (push the "save" button to save)
+-display_in_modal_window = false if local_assigns[:display_in_modal_window].nil?
+-form_div = '' if local_assigns[:form_div].nil?
+
+-if display_in_modal_window
+  -session_key = Rails.application.config.session_options[:key]
+  :javascript
+    load_js_for_avatar_widget("#{current_user.authentication_token}", "#{uid}", "#{form_div}");
+-else
+  -content_for :page_javascript do
+    -session_key = Rails.application.config.session_options[:key]
+    :javascript
+      load_js_for_avatar_widget("#{current_user.authentication_token}", "#{uid}");

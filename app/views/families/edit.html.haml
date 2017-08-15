@@ -1,0 +1,28 @@
+-content_for :title  do
+  ="#{@family.name} Family"
+
+-content_for :user_strip do
+  =render :partial=>'shared/profile_links'
+    
+-content_for :left_panel do
+  .family_info
+    =render :partial=>'shared/profile_picture_widget_2', :locals=>{:has_avatar=>@family}
+    =render "form", :family=>@family, :submit_button_text=>"update"
+
+  .delete_circle_source
+    .delete_message
+      If you'd like to delete this family and all the data related to it just click the delete this family button. Please
+      be aware that this operation cannot be undone and all the family data will be permanently deleted.
+      %br
+      %br
+      =link_to "delete this family", @family, :method=>:delete, :title=>"Delete the #{@family.display_name}", |
+                 :confirm=>"Are you sure you want to delete the #{@family.display_name} and all its data?", :class=>'', |
+                 :style=>'background: grey;'
+
+-content_for :right_panel do
+  =render :partial=>"shared/circles/header", :locals=>{:circle=>@family.circle}         
+
+    
+-content_for :page_javascript do
+  :javascript
+    load_js_for_family_edit_page();

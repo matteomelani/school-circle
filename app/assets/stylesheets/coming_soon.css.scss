@@ -1,0 +1,77 @@
+#page.coming_soon, #page.create_interested_people {
+	.single_panel {
+		height: 470px;
+		text-align: center;
+		padding: 20px 0 0 0;
+	}
+	.footer .copyright {
+	    margin-right: 10px;
+	}
+}
+
+.strip {
+	@include box-shadow;
+	.sign
+	{ 
+		margin: 20px 0 0 0;
+		font-size: 20px;
+		font-family: Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+		font-weight: 700;
+		background: $foreground-color;
+		color: $background-color;
+		padding: 20px;
+	}
+	.notify_me_form
+	{
+		background: $foreground-color;
+		padding-bottom: 20px;
+		color: $black;
+		padding-left: 270px;
+		height: 60px;
+		text-align: start;
+	    .enter_text {
+			float: left;
+			padding-left: 85px;
+		}
+		.input[type="text"] {
+			float: left;
+			display: block;
+		}
+		input[type="submit"] {
+			float: none;
+		}
+		.field_with_errors {
+			float: left;
+			label {
+				display: inline;  
+				border-color: red;
+				position: static;
+				margin-left: 5px;
+				font-size: 14px;   
+			}
+		}
+	}
+}
+
+
+
+.notice
+{
+	background: none repeat scroll 0 0 #E6EFC2;
+	border-color: #C6D880;
+	color: #264409;
+}
+
+.error, .alert, .notice, .success, .info {
+	border: 2px solid #DDDDDD;
+	margin-bottom: 1em;
+	padding: 0.8em;
+	font-family: Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+}
+
+.error
+{
+	background: none repeat scroll 0 0 #FBE3E4;
+	border-color: #FBC2C4;
+	color: #8A1F11;
+}

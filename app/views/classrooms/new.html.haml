@@ -1,0 +1,13 @@
+-content_for :title do
+  ="New Classroom"
+
+-content_for :single_panel do
+  %h2
+    New Classroom
+  =render :partial=>'shared/profile_picture_widget_2', :locals=>{:has_avatar=>@classroom}
+  =render :partial=>'form', :locals=>{ :classroom => @classroom }
+  
+-content_for :page_javascript do
+  :javascript
+    load_js_for_classroom_new_page();
+         

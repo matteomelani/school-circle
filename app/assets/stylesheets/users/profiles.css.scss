@@ -1,0 +1,58 @@
+@mixin info_message{
+	padding: 10px;
+	background: $super-light-orange;
+	color: $grey;
+	margin-left: 10px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;	
+}
+
+//--------------------------------------------------------------------------------------
+//  edit
+//--------------------------------------------------------------------------------------
+#page.profiles.edit {
+	.avatar_widget_wrapper {
+		margin: 20px 0 0 75px;		
+	}
+	
+	.basic_info, .favorites {
+		margin: 10px 0 20px 0;
+	}
+	
+	.edit_profile {
+		.help_message_container {
+		}
+		.help_message {
+			@include info_message;
+		}
+	}
+
+	select#profile_main_role{
+		margin-left: 10px;
+		width: 100px;
+		padding-left: 0;
+	}
+	select#profile_sex{
+		width: 100px;
+		padding-left: 0;
+	}
+	select#profile_birthday_1i, select#profile_birthday_3i{
+		width: 60px;
+	}
+	select#profile_birthday_2i{
+		width: 90px;
+	}
+	#profile_location_attributes_input_string {
+		width: 200px;
+	}
+	form.edit_profile input[type=submit].button {
+		margin-left: 230px;
+	}
+	.contact_info {
+		margin-top: 20px;
+	}
+	.uploadifyQueueItem {
+		margin-top: 0;
+	}
+}
+

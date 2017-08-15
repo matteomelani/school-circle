@@ -1,0 +1,71 @@
+<html> 
+<!-- 
+This page is on the same domain as the parent, so can
+communicate with it to order the iframe window resizing
+to fit the content 
+--> 
+  <body> 
+    <script> 
+      // Tell the parent iframe what height the iframe needs to be
+      function parentIframeResize()
+      {
+         var height = getParam('height');
+         // This works as our parent's parent is on our domain..
+         parent.parent.resizeIframe(height);
+      }
+      
+      function parentPopup()
+      {
+         var url = getParam('popurl');
+         
+         if(url != '')
+         {
+         	var popwh = getParam('popwh');
+         	var popht = getParam('popht');
+         	// This works as our parent's parent is on our domain..
+			// have to urldecode argument being sent over
+			parent.parent.OpeniFrameURL(decodeURIComponent((url+'').replace(/\+/g, '%20')), popwh, popht);
+			return true;
+         }
+		 
+		 return false;
+      }
+	  
+	  function setChomponPage()
+      {
+         var url = getParam('churl');
+         
+         if(url != '')
+         {
+         	// This works as our parent's parent is on our domain..
+			// have to urldecode argument being sent over
+			parent.parent.SetChomponURL(decodeURIComponent((url+'').replace(/\+/g, '%20')));
+			parent.parent.OpeniFrameURL('close', 0, 0); // always want to try to close
+			return true;
+         }
+		 
+		 return false;
+      }
+
+      // Helper function, parse param from request string
+      function getParam( name )
+      {
+        name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+        var regexS = "[\\?&]"+name+"=([^&#]*)";
+        var regex = new RegExp( regexS );
+        var results = regex.exec( window.location.href );
+        if( results == null )
+          return "";
+        else
+          return results[1];
+      }
+      
+       window.onload = function() {
+			var isPopup = parentPopup();
+			var isPageSet = setChomponPage();
+		    if(!isPopup && !isPageSet)
+	      		parentIframeResize();
+       }
+    </script> 
+  </body> 
+</html>

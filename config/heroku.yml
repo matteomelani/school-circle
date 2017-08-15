@@ -1,0 +1,42 @@
+test: 
+    app: tsc-test
+    config:
+        BUNDLE_WITHOUT: "development"
+    addons:
+        custom_domain:
+            domain: test.theschoolcircle.com
+
+staging: 
+    app: tsc-staging
+    config:
+        BUNDLE_WITHOUT: "development"
+    addons:
+        custom_domain:
+            domain: staging.theschoolcircle.com
+
+production: 
+    app: tsc-production
+    config:
+        BUNDLE_WITHOUT: "development"
+    addons:
+        custom_domain:
+            domain: theschoolcircle.com
+
+demo: 
+    app: tsc-demo
+    config:
+        BUNDLE_WITHOUT: "development"
+    addons:
+        custom_domain:
+            domain: demo.theschoolcircle.com
+
+alpha: 
+    app: tsc-alpha
+    config:
+        BUNDLE_WITHOUT: "development"
+    addons:
+        custom_domain:
+            domain: a.theschoolcircle.com
+
+          
+

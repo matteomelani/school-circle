@@ -1,0 +1,8 @@
+-content_for :title do
+  ="Sign In"
+
+-content_for :header do
+  =render :partial=>'shared/general_header', :locals=>{:sign_up_button=>true, :sign_in_button=>false} 
+  
+-content_for :single_panel  do
+  =render :partial=>'users/sessions/new'

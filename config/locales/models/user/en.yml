@@ -1,0 +1,8 @@
+     
+en:
+    activerecord:
+        errors:
+            user:
+                attributes:
+                    email:
+                        invalid: "is invalid. Please correct the email and try again."

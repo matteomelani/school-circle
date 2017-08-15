@@ -1,0 +1,44 @@
+-content_for :title  do
+  ="#{@user.display_name}'s Account"
+    
+-content_for :left_panel do
+  =render :partial=>'shared/dashboard'
+
+-content_for :right_panel do 
+  %h2
+    Edit Account
+  .account_settings        
+    =render :partial=>'form'
+    
+  .element_bar_thin
+    .element_title_left
+      linked accounts
+  .linked_accounts
+    =render :partial=>'users/authentications/show', :collection=>@user.authentications, :as=>:authentication
+    -providers = [ {:name=>'facebook',:type=>'facebook'}, |
+                   {:name=>'google',:type=>'open_id'},    |
+                   {:name=>'yahoo',:type=>'open_id'},     |
+                   {:name=>'aol',:type=>'open_id'}]
+    -providers.each do |p|
+      -unless @user.authentications.exists?(:provider_name=>p[:name])
+        =render :partial=>'users/authentications/show', 
+                :locals=>{:authentication=>Authentication.new(:provider=>p[:type], :provider_name=>p[:name]) }
+  
+  .element_bar_thin
+    .element_title_left
+      delete account
+  .deactivate_account_text
+    We are sorry to see you leaving. Please let us know if there is anything we can do better: 
+    =mail_to "improve@theschoolcircle.com", "Tell us  how to improve"
+  .deactivate_account_button
+    %br
+    =link_to "Delete account", 
+             user_account_path(@user), 
+            :confirm => "Are you sure? All your data will be deleted. This cannot be undone. ", 
+            :method => :delete, :class=>'button danger'
+
+-content_for :page_javascript do
+  :javascript
+    App.load_js_for_registrations_edit_page();
+
+  

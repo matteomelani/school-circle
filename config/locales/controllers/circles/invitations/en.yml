@@ -1,0 +1,6 @@
+en:
+    controllers:
+        circles:
+            invitations:
+                create:
+                    success: Invitations successfully sended.        

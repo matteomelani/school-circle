@@ -1,0 +1,30 @@
+-content_for :title  do
+  ="Schools"
+
+-content_for :user_strip do
+  =render :partial=>'shared/circles_links'
+    
+-content_for :left_panel do
+  .element
+    .element_bar
+      .element_title
+        schools
+    .element_container
+      .schools
+        -@schools.each do |s|
+          =render :partial=>'school_tag', :locals=>{:school=>s}
+        .info_message{:style=>"display: none;"}
+          You are not subscribed to any school.
+        = will_paginate @schools
+
+-content_for :right_panel do
+  .element
+    .element_bar
+      .element_title
+    .element_container
+      nothing here
+      
+      
+-content_for :page_javascript do
+  :javascript
+    load_js_for_schools_index_page();

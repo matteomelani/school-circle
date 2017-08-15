@@ -1,0 +1,22 @@
+.school
+  .school_info_container
+    .avatar
+      =image_tag school.avatar_url(:large), :alt=>"Photo"
+    .school_info
+      .school_name
+        =school.name
+      .school_grade
+        ="#{school.grade_range}"
+      .school_category
+        =school.category
+      .school_address
+        =school.addresses.first
+      .school_phone
+        =school.phone_numbers[0]
+      .school_url
+        =school.web_site_url
+    .clear    
+    .school_classrooms
+      -school.classrooms.each do |c|
+        ="#{c.name}"
+    .clear  

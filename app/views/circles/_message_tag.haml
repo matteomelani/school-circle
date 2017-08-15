@@ -1,0 +1,46 @@
+.message_tag
+  .context
+    .context_title
+      =link_to "#{message.to.display_name}", url_for(message.to), :class=>"circle_home_link", :title=>"Go to #{message.to} page."
+    .tag
+      .avatar
+        = image_tag message.sender.profile.avatar_url
+      .metadata
+        .sender
+          =message.sender.profile_full_name
+        .date
+          =message.created_at.strftime(I18n.t('time.formats.default'))
+        .clear
+        .title
+          =message.title
+        .clear
+        .body_preview.autoellipsis
+          -if message.content.blank?
+            %span{:class=>"lightgrey-text"}
+              ="MESSAGE IS EMPTY"
+          -else
+            =sanitize message.content, :tags => %w(table tr td), :attributes => %w()
+        .stats
+          .score_count{:title=>'Message score, the higher it is the more readers found the message useful.'}
+            =image_tag 'favorite_16x16.png'
+            =message.score   
+          .comment_count{:title=>'Number of comments for this message.'}
+            =image_tag 'comments_16x16.png'
+            =message.comments.count
+          .attachment_count{:title=>'Number of documents attached to the message.'}
+            -if message.zfiles.count > 0
+              =image_tag 'attachment_16x16.png'
+              =message.zfiles.count
+        .actions
+          -if message.thread_posts.count > 1 and display_as_conversation
+            =link_to "view conversation", messages_path(:thread_id=>message.thread_id), |
+                     :remote=>true, :id=>"view_conversation_#{message.thread_id}" 
+          -else
+            =link_to "view", message_path(message), :class=>"orange-text small-text", :remote=>true , |
+                     :id=>"actions_message_view" 
+      -if message.thread_posts.count > 1 and display_as_conversation
+        .thread_count_box
+          .thread_count
+            =message.thread_posts.count
+      
+      .clear

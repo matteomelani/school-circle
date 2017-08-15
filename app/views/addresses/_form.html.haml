@@ -1,0 +1,21 @@
+.fields
+  =f.label :line1, "Label:  "
+  =f.text_field(:label, :size=> 5)
+  %br
+  =f.label :line1, "Line 1: "
+  =f.text_field :line1, :size=> 30
+  %br
+  =f.label :line1, "Line 2: "
+  =f.text_field :line2, :size=> 30
+  %br
+  =f.label :city, "City:   "
+  =f.text_field :city, :size=> 20
+  =f.label :state, "State"
+  =f.text_field :state, :size=> 14
+  &nbsp
+  =f.label :zipcode, "Zip"
+  =f.text_field :zipcode, :size=> 5
+  %br
+  =f.label :country, "Country"
+  =f.text_field :country, :value=>"USA", :disabled=> true, :size=> 15
+  %br

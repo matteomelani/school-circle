@@ -1,0 +1,24 @@
+.post_bar
+  .text.float-left
+    POST
+  #post_message_button.post_button
+    .message_link
+      =link_to image_tag('post_message_48x48.png'), new_message_path, :remote=>true, :title=>"Post a message", :id=>"post_message_link"
+    .text
+      message
+  #post_reminder_button.post_button    
+    .reminder_link
+      =link_to image_tag('post_reminder_48x48.png'), new_reminder_path, :remote=>true, :title=>"Post a reminder", :id=>"post_reminder_link" 
+    .text
+      reminder
+  #post_photo.post_button    
+    .photo_link
+      =link_to image_tag('post_photo_48x48.png'), "#", :remote=>true, :title=>"Post a reminder", :title=>"COMING SOON: Post photos" 
+    .text
+      photo
+  #post_video.post_button
+    .video_link
+      =link_to image_tag('post_video_48x48.png'), "#", :remote=>true, :title=>"Post a reminder", :title=>"COMING SOON: Post a video" 
+    .text
+      video
+  .clear

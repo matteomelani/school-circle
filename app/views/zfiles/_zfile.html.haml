@@ -1,0 +1,6 @@
+.fields
+  -if zfile.id.nil?
+    =f.file_field :zfile 
+  -else
+    =zfile.name
+  =remove_child_link "X", f, Message::MAX_ATTACHMENTS

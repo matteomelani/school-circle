@@ -1,0 +1,28 @@
+-content_for :title  do
+  ="#{@user.profile.first_name}'s Home"
+
+-content_for :modal_window do
+  #show_message_overlay
+
+/ -content_for :user_strip do
+/   .user_strip_links
+/     =link_to 'ALL', user_post_board_path(@user), :remote=>true, :format=>:js,:class=>'message_filter all'      
+/     -if @user.profile.is_parent?
+/       -if @user.my_family
+/         -@user.my_family.children.each do |child|
+/           =link_to child.profile_first_name, user_post_board_path(@user,:circles=>(child.circles.collect{|c| c.id})), :remote=>true, :format=>:js,:class=>'message_filter'
+/     -elsif @user.profile.is_teacher? && @user.my_classrooms
+/       -@user.my_classrooms.each_with_index do |classroom, index|
+/         =link_to classroom.short_name, user_post_board_path(@user,:circles=>[classroom.circle.id]), :remote=>true, :format=>:js,:class=>'message_filter'
+
+-content_for :left_panel do
+  .user_feed{:style=>"min-height: 20px;"}
+    =render :partial=>'users/post_board', :locals=>{:feed_items=>@feed_items}
+   .clear    
+
+-content_for :right_panel do
+  =render :partial=>'shared/user_dashboard'
+
+-content_for :page_javascript do
+  :javascript
+    load_js_for_users_show_page();

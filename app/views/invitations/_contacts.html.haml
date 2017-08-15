@@ -1,0 +1,11 @@
+%br
+-@user.profile.contacts.each do |c|
+  .contact
+    .name
+      ="#{c['name']}"
+    .invite_action
+      = "Invite"
+    .clear  
+    .email  
+      ="#{c['email']}"
+    

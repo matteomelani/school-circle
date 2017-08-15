@@ -1,0 +1,80 @@
+#reminder {
+	margin-top: 10px;   
+	padding: 1em 0 0.5em 0;
+	border-bottom: 1px solid $super-light-grey;
+}
+#reminder_author_photo {
+	padding: 0em 0.8em 0 0.8em;
+}
+#reminder_container {
+	width: 85%;
+	padding-bottom: .5em;
+}
+#reminder_header {
+	line-height: 1.2em;
+	padding-bottom: 0.5em;
+}
+#reminder_body {
+	line-height: 0.9em;
+	padding-bottom: 0.2em;
+    word-wrap: break-word;
+}
+#reminder_post_time {
+	font-size: 0.9em;
+}
+#new_reminder_container{
+  position: relative;
+  margin-top: 200px;
+  width: 650px;
+}
+#new_reminder{
+	position: relative;
+	top: 15px;
+	left: 15px;
+	display: block;
+	background:  $soft-yellow;
+	z-index: 101;
+	padding: 10px;
+}
+#reminder_title{
+	margin: 7px 20px 0 10px;
+	padding: 2px 0 0 0;
+	font-size: 14px;
+}
+#unkown_recipient_error{
+	display: none;
+	color: white;
+	background: red;
+	border: 1px solid blue;
+	
+}
+#reminder_recipient{
+	padding-left:3px;
+}
+#reminder_window_close_button{
+  	margin: 7px 0px 0 0px;
+}
+#reminder_content{
+	display: block;
+	margin: 20px 0 0 10px !important;
+	padding: 10px 0 0 10px !important;
+	width: 600px !important; 
+	height: 100px !important;
+    font-size: 18px !important;;
+	line-height: 18px !important;
+}
+#new_reminder .jqEasyCounterMsg{
+	width: 500px !important;
+	padding-top: 10px;	
+}
+#new_reminder input[type="submit"]{
+	position: absolute;
+	bottom:5px;
+	right: 15px;
+	margin: 0px;
+}
+#white_div{
+	border-bottom: 2px solid white;
+	width: 100%;
+	min-height: 2px;
+}

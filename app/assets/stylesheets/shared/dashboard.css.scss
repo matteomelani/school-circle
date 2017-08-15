@@ -1,0 +1,77 @@
+.card {
+	border-bottom: 1px solid $super-light-grey;
+	padding: 0 0 5px 0;
+	.text {
+		font-size: 14px;
+		font-weight: bold;
+		color: $black;
+	}
+}
+.post_bar{
+	padding: 10px 0 10px 0;
+	>.text{
+		color: $orange;
+		font-weight: bold;
+		font-style: italic;
+		margin-right: 5px;
+	}
+	.post_button {
+		float: left;
+		margin-right: 10px;
+		position: relative;
+		.text{
+			position: relative;
+			top: -8px;
+			left: 3px;
+		}
+	}
+	#post_photo{
+		opacity: 0.4;
+		filter:alpha(opacity=40);
+		.text{
+			filter:alpha(opacity=40);
+		}
+	}
+	#post_video {
+		margin-right:0px;
+		opacity: 0.4;
+		filter:alpha(opacity=40);
+		.text{
+			filter:alpha(opacity=40);
+		}
+	}
+}
+
+.my_circles {
+	margin-top: 10px;
+	border-top: 1px solid $super-light-grey;
+	padding-top: 10px;
+	.circle_label {
+		border-bottom: 1px solid $super-light-grey;
+		margin-top: 5px;
+		padding: 3px 3px 3px 5px;
+		background: $grey-yellow;
+		img {
+			float: left;
+		}
+		.metadata{
+			float: left;
+			margin-left: 5px;
+			padding-top: 3px;
+			font-weight: bold;
+			max-width: 225px;
+			line-height: 12px;
+			.members{
+				a  {
+					font-size: 11px;
+					font-weight: normal;
+					padding: 0px;
+				}
+			}
+		}
+		a {
+			color: $orange;
+			font-size: 13px;
+		}
+	}
+}

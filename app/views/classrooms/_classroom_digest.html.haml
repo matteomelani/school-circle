@@ -1,0 +1,71 @@
+.classroom_info_container
+  .avatar
+    =image_tag classroom.avatar_url(:large), :alt=>"Photo"
+  .classroom_info
+    .title.black-text.bold-text.float-left
+      ="#{classroom.display_name}"
+      %span.grey-text.small-text
+        ="(#{classroom.school_year})" unless classroom.school_year.blank? 
+    .actions_container
+      .actions
+        -if @user.has_role?(Circle::ADMIN_ROLE, classroom.circle)
+          =link_to 'edit', edit_classroom_path(classroom), :title=>'edit classroom info and memberships.', 
+                   :class=>'orange-text'
+          ="|"
+          =link_to 'delete', 
+                   classroom_path(classroom, :format=>:json),
+                   :remote=>true,
+                   :method=>:delete,
+                   :title=>'delete classroom',
+                   :confirm=>'Are you sure you want to delete the classroom and all its data?',
+                   :class=>'delete orange-text'
+    .tag_value_pair.grade
+      .tag
+        ="Grade"
+      .value
+        =classroom.grade_level           
+    .clear
+    .tag_value_pair.teacher
+      .tag
+        ="Teacher"
+      .value
+        ="#{classroom.teacher}"             
+    .clear
+    .tag_value_pair.school
+      .tag
+        ="School"
+      .value
+        -if classroom.school
+          ="#{classroom.school.name}"              
+    .clear
+    .tag_value_pair.email
+      .tag
+        ="Email"
+      .value
+        ="#{classroom.circle.email}"             
+    .clear
+    .tag_value_pair.pin
+      .tag
+        ="Pin"
+      .value
+        ="#{classroom.random_code}"             
+    .clear
+    .tag_value_pair.about
+      .tag
+        ="About"
+      .value
+        ="#{classroom.about}"             
+    .clear
+    .actions_container
+      .actions.orange-text
+        =link_to 'invite', new_circle_invitation_path(classroom.circle), :remote=>true, 
+                 :title=>'invite people to this circle.', :class=>'orange-text'
+        =" | "
+        -if @user.has_role?(Circle::ADMIN_ROLE, classroom.circle) and classroom.circle.admins.count>1
+          =link_to 'leave', membership_path(Membership.find_by_user_id_and_circle_id(@user.id, classroom.circle.id)), 
+                 :remote=>true, :method=>:delete, :title=>"leave the #{classroom.display_name}", :class=>'leave orange-text'
+        -else
+          =link_to 'leave', "#", :confirm=>"You are the only admin of the classroom. You cannot leave before you nominate an other admin", 
+                   :title=>"leave the #{classroom.display_name}", :class=>'leave orange-text'
+                        
+  .clear

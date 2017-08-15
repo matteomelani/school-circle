@@ -1,0 +1,24 @@
+=form_for family do |f|
+  .field_container 
+    =f.label :name, "Name"
+    =f.text_field :name, :style=>"width: 295px"
+  .clear
+  =f.fields_for :location do |l|
+    .field_container
+      =l.label :location, "Located"
+      =l.text_field :input_string, :style=>"width: 300px;"
+    .clear
+  .clear
+  
+  .field_container 
+    =f.label :languages, "We speak"
+    =f.text_field :languages, :value => family.languages.join(", "), :style=>"width: 295px"
+  .clear
+  %div{:id=>"avatar_id"}
+  .button_container
+    =f.submit 'Save', :class=>"submit_button"
+  
+-content_for :page_javascript do
+  :javascript
+    load_js_for_family_form();
+  

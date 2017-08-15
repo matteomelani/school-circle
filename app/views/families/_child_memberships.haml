@@ -1,0 +1,15 @@
+.span-16
+  #child_memberships
+    =render :partial=>'families/child_membership', :collection=>family.child_memberships, :as=>:membership           
+    .span-16
+      .button_container
+        -child = User.new
+        -child.memberships.build(:circle=>@family.circle, :roles=>[Family::KID_ROLE, Family::MY_FAMILY])
+        -add_child_form=capture do
+          =render :partial=>'users/child_form', :locals=>{:user=>child}
+        =link_to 'add child', "#", :'data-form'=>"#{add_child_form}",  :class=>'add submit_button'
+      
+      
+
+  
+    

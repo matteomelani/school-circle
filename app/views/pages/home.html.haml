@@ -1,0 +1,16 @@
+-content_for :title do
+  ="The School Circle"
+
+-content_for :header do
+  =render 'shared/general_header' 
+      
+-content_for :single_panel do
+  .pitch
+    .title
+      Connecting Parents and Teachers with the Local Community
+    .text
+      The School Circle is the easiest way to help parents stay on top of their kids' school life.
+    .sign_up_button
+      =link_to "Sign Me Up Now", new_registration_users_path, :class=>"button important"
+
+

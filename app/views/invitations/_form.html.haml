@@ -1,0 +1,28 @@
+=form_for invitation, :url=>{ :controller=>'circles/invitations', :action=>'create', :circle_id=>invitation.circle.id}, :remote=>true, :html=>{:'data-type'=>'json'} do |f|
+  .field_container
+    =f.label :email, "Email"
+    =f.text_field :email, :validate=>true
+  .clear
+  =f.fields_for :registration_info do |registration_info|
+    .field_container
+      =registration_info.label :first_name, "First name"
+      =registration_info.text_field :first_name, :validate=>false
+    .clear
+    .field_container
+      =registration_info.label :last_name, "Last name"
+      =registration_info.text_field :last_name, :validate=>false
+    .clear
+    .field_container
+      =registration_info.label :message, "Message"
+      =registration_info.text_area :message, :validate=>false
+    .clear
+      
+  =f.fields_for :registration_info do |registration_info|
+    -invitation.registration_info.each do |key, value|
+      =registration_info.hidden_field key.to_sym, :value=>value
+  =f.hidden_field :inviter_id, :value => invitation.inviter_id
+  =f.hidden_field :circle_id, :value => invitation.circle_id
+  
+  
+  =f.submit "invite", :class=>"submit_button"
+  .clear

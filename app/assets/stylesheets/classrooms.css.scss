@@ -1,0 +1,40 @@
+.classroom_membership_fields a.remove_fields{
+	color: orange;
+	display: block;
+	margin: 8px 0 0 10px;
+	float: left;
+}
+.classrooms_container {
+	margin-top: 40px;
+	.info_message{
+		color: $grey; 
+		margin: 20px 0 40px 5px;
+		font-size: 14px;
+	}
+}
+.new_classroom{
+	margin-top: 15px;
+}
+.classroom_info_container{
+	padding: 20px 0 20px 5px;
+	border-bottom: 1px solid $super-light-grey;
+}
+.classroom_info {
+	float: left;
+	width: 495px;
+}
+.classroom_info .title{
+	padding: 0 0 0 10px;
+}
+.classroom {
+  margin:0  0 10px 0;
+  background: $grey-yellow;	
+  .tag_value_pair{
+	  float: left;
+  }
+}
+.classroom .tag_value_pair.about .value {
+	width: 400px;
+	height: 36px;
+	overflow: hidden;
+}

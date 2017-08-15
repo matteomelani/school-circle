@@ -1,0 +1,10 @@
+.user_strip_links
+  =link_to 'Profile', edit_user_profile_path(@user), :id=>"myprofile"
+  -if @user.profile.is_parent?
+    -if @user.my_family.nil?
+      =link_to "Family", new_family_path, :title => "view/edit my family", :id=>"myfamily"
+    -else
+      =link_to "Family", edit_family_path(@user.my_family.id), :title => "view/edit my family", :id=>"myfamily"
+  =link_to "Account", edit_user_account_path(@user), :id=>"myaccount"
+  =link_to "Notifications", "#", :title=>"manage how info is pushed to me", :id=>"mynotifications"
+  

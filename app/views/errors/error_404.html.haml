@@ -1,0 +1,18 @@
+-content_for :title do
+  ="Error 404"
+
+-content_for :header do
+  =render 'shared/general_header' 
+      
+-content_for :single_panel do
+  .page_error
+    .status
+      404
+    .message
+      .title
+        Sorry! 
+      .text
+        We cannot find the page you are looking for.
+      .home_button
+        =link_to "Take Me Home", home_path, :class=>"danger button"
+

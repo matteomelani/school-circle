@@ -1,0 +1,108 @@
+.memberships{
+	padding-bottom: 50px;
+}
+.membership {
+	background: $grey-yellow;
+	margin-top: 10px;
+	padding: 5px;
+	img {
+		display: block;
+		float: left;
+		margin-right: 10px;
+	}
+	.metadata {
+		float: left;
+		width: 475px;
+		.name {
+			font-size: 14px;
+			font-weight: bold;
+		}
+		.contact_info {
+		    margin: 0 0 3px 0;  
+		}
+		.family_info {
+			margin: 0;
+			padding: 5px 3px 3px 3px;
+			border-top: 1px solid $super-light-grey;
+			.member_id_container {
+				img {
+					margin: 0px 3px 0px 0px;
+				}
+				overflow: hidden;
+				word-wrap: break-word;
+				background: none;
+				margin-left: 3px;
+				width: 100px;
+				height: 35px;
+			}
+			.member_id_container {
+				.first_name, .last_name {
+					overflow: hidden;
+					word-wrap: break-word;
+					clip: ellipsis;
+					float: left;
+					height: 18px;
+				    width: 55px;
+				    margin: 0 3px 0 3px;
+			   }	
+			}
+		}
+	}
+	.actions {
+		float: right;
+		border: 1px solid $light-grey;
+		padding: 5px 10px 5px 10px;
+		margin: 0px;
+		font-size: 13px;
+		background: $white-grey;
+		border-radius: 4px; 
+		-moz-border-radius: 4px;  
+		-webkit-border-radius: 4px;
+		background-image: -moz-linear-gradient(bottom, $grey-yellow-darker04 10%, $grey-yellow 70%);
+		background-image: -webkit-linear-gradient(bottom, $grey-yellow-darker04 10%, $grey-yellow 70%);
+		background-image: -ms-linear-gradient(bottom, $grey-yellow-darker04 10%, $grey-yellow 70%);
+		ul {
+			list-style: none;
+			padding: 0px;
+			margin: 0px;
+			li {
+				margin: 0;
+				position: relative; /*--Declare X and Y axis base for sub navigation--*/
+				ul.menu {
+					display: none;
+					border-radius: 4px; 
+					-moz-border-radius: 4px;  
+					-webkit-border-radius: 4px;
+					background: $white-grey;
+					padding: 5px 5px 5px 10px;
+					width: 60px;
+					position: absolute; /* keep menu from affecting top link */
+					top: 25px;
+					left: -10px;
+					float: left;
+					padding: 0px;
+					margin: 0px;
+					border: 1px solid $light-grey;
+					a {
+						padding: 5px 10px 5px 10px;
+					}
+					z-index: 100;
+				}
+				a {
+					color: $orange;
+					display: block;
+					text-decoration: none;
+				}
+				a:hover {
+					background: $super-light-grey no-repeat center top;
+				}
+			}
+
+			} /* ui ends */
+	    } /* actions ends */
+
+}
+
+.classroom:hover, .membership_invitation_container:hover, .membership_info_container:hover, .member_family_container:hover{
+	background: $soft-yellow;
+}

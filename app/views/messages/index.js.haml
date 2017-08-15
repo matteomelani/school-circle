@@ -1,0 +1,14 @@
+-content_for :feed do
+  .thread_info
+    .back_link
+      =link_to "<< back", "#", :title=>"back to the post board", :style=>"color: white;"
+    .thread_title 
+      ="#{@messages.last.title}"
+    .posts_count
+      ="#{@messages.last.thread_posts.count} posts"
+    .clear
+  =render :partial=>'circles/feed_item', :collection=> @messages, :locals=>{:display_as_conversation=>false}
+  
+$('.posts').html("#{escape_javascript(content_for(:feed))}");
+
+load_js_for_post_board_widget();

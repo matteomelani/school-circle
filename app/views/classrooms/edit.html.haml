@@ -1,0 +1,20 @@
+-content_for :title do
+  ="#{@classroom.name}"
+
+-content_for :left_panel do
+  =render :partial=>'shared/dashboard'
+  
+-content_for :right_panel do
+  =render :partial=>'shared/profile_picture_widget_2', :locals=>{:has_avatar=>@classroom}
+  =render :partial=>'form', :locals=>{:classroom=>@classroom }
+  %br
+  =link_to "Delete This Classroom", 
+                @classroom, 
+                :method=>:delete, 
+                :title=>"Delete the #{@classroom.display_name}",  
+                :confirm=>"Are you sure you want to delete the #{@classroom.display_name} and all its data?",
+                :class=>'link_as_grey_button'
+   
+-content_for :page_javascript do
+  :javascript
+    load_js_for_classrooms_edit_page();

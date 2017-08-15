@@ -1,0 +1,17 @@
+#new_reminder_container
+  #transparent-div
+  =form_for reminder, :validate=>true do |f|
+    #reminder_title.orange-text.padding-left-10px.float-left
+      ="To"
+    #reminder_to.float-left  
+      =text_field_tag(:reminder_recipient, "", :class=>"large",:'data-endpoint'=>user_contacts_path(@user))
+    #reminder_window_close_button.text-allign-right.float-right.padding-right-10px
+      =link_to "X", "#", :class=>'orange-text bold-text'
+    .clear
+    #unkown_recipient_error
+      Unknown Receipient!
+    #white_div
+    =f.text_area :content, :class=>"large"
+    =f.hidden_field(:circle_id, :value => reminder.circle_id)
+    =f.submit "post", :class=>"submit_button"
+    

@@ -1,0 +1,45 @@
+.message_digest
+  .context
+    .context_title
+      =link_to "#{message.to.display_name}", url_for(message.to), :class=>"circle_home_link", :title=>"Go to #{message.to} page."
+    #message_author_photo
+      = image_tag message.sender.profile.avatar_url
+    #message_container.float-left
+      .stats.float-right
+        .score_count{:title=>'Message score, the higher it is the more readers found the message useful.'}
+          =image_tag 'favorite_16x16.png'
+          =message.score   
+        .comment_count{ :title=>'Number of comments for this message.'}
+          =image_tag 'comments_16x16.png'
+          =message.comments.count
+        .attachment_count{:title=>'Number of documents attached to the message.'}
+          -if message.zfiles.count > 0
+            =image_tag 'attachment_16x16.png'
+            =message.zfiles.count      
+      .header
+        %span
+          =message.sender.profile_full_name
+        %br
+        %span
+          =message.created_at.strftime(I18n.t('time.formats.default'))
+          %br
+        %span{:class=>'bold-text'}
+          =message.title
+        -if message.thread_posts.count > 1 and display_as_conversation
+          .thread_count
+            =message.thread_posts.count
+      .message_body.content.autoellipsis.float-left
+        -if message.content.blank?
+          %span{:class=>"lightgrey-text"}
+            ="MESSAGE IS EMPTY"
+        -else
+          =sanitize message.content, :tags => %w(table tr td), :attributes => %w()
+    .clear  
+        
+    #message_actions_container
+      #message_actions.float-right
+        -if message.thread_posts.count > 1 and display_as_conversation
+          =link_to "view conversation", messages_path(:thread_id=>message.thread_id), :class=>"orange-text small-text view_conversation", :remote=>true, :id=>"view_conversation_#{message.thread_id}" 
+        -else
+          =link_to "view", message_path(message), :class=>"orange-text small-text", :remote=>true, :id=>"actions_message_view" 
+    .clear

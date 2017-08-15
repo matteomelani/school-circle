@@ -1,0 +1,6 @@
+-content_for :new_message_page do
+  =render :partial=>'messages/form', :locals=>{:message=>@message}
+  
+if ( $('.close a').length > 1 ) { $('.close a').click(); }
+show_modal_window_full_screen('new_massage_page', "#{escape_javascript(content_for(:new_message_page))}");
+load_js_for_messages_new_page("#{current_user.authentication_token}");

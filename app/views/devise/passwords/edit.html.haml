@@ -1,0 +1,30 @@
+-content_for :left_panel  do
+  .element
+    .element_bar
+      .element_title
+    .element_container
+      %br
+      %h3
+        Change your password
+
+      =form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
+        =devise_error_messages!
+        =f.hidden_field :reset_password_token
+        .field_container
+          =f.label :password
+          =f.password_field :password
+        .clear
+        .field_container
+          =f.label :password_confirmation, 'Retype the password'
+          =f.password_field :password_confirmation
+        .clear
+        .button_container{:style=>"margin-top: 30px;"}
+          =f.submit "Change my password", :class=>'submit_button', :style=>'float: none;'
+
+-content_for :right_panel  do
+  .element
+    .element_bar
+      .element_title
+        links
+    .element_container
+      =render :partial=>'shared/help_links'

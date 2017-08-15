@@ -1,0 +1,26 @@
+:javascript
+  $(function(){
+   var path = location.pathname.substring(1);
+   if ( path )
+     $('#settings_nav_tabs a[href$="' + path + '"]').attr('class', 'selected');
+  });
+
+
+#settings_nav_tabs.nav.clearfix
+  %ul
+    %li
+      %a{:href => "#{edit_user_profile_path(@user.id)}", :id => "current", :title => "view/edit my profile"}
+        %span Profile
+    %li
+      %a{:href => "#{edit_user_account_path(@user.id)}", :id => "account_tab", :title => "view/edit my account"}
+        %span Account
+    %li
+      -if @user.my_family.nil?
+        %a{:href=>"#{new_family_path}", :id => "family_tab", :title => "view/edit my family"}
+          %span Family
+      -else
+        %a{:href=>"#{edit_family_path(@user.my_family.id)}", :id => "family_tab", :title => "view/edit my family"}
+          %span Family
+  .profile_tab
+  .account_tab
+  .family-tab

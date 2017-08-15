@@ -1,0 +1,9 @@
+$('#comment_list').append("<%= escape_javascript( render :partial=>'messages/comments/comment', :locals=>{:comment=>@comment} ) %>");  
+$('#comment_form textarea').val('');
+$('#comment_form textarea').focus();
+//TODO: dynamically get the height of the last added element, for some reason the following does not work:
+//var p = $('#comment_list .comment:first').outerHeigth();
+var p=92;
+var h = $('#message_view_left_column').height();
+$('#message_view_left_column').height(h+p);
+$('#message_view_right_column').height(h+p);
