@@ -8,18 +8,18 @@ Feature: Sign up with email and password
       And I go to the sign up page
       And I fill in "user_profile_attributes_first_name" with "John" within ".signup"
       And I fill in "user_profile_attributes_last_name" with "Smith" within ".signup"
-      And I fill in "user_email" with "matteomelani@gmail.com" within ".signup"
+      And I fill in "user_email" with "@gmail.com" within ".signup"
       And I fill in "user_password" with "ciaociao" within ".signup"
     When I press "Ok, I am done!" within ".signup"
      Then I should see "John,"
      And I should see "Thank you for signing up!" 
-     And I should see "We have sent you an email at matteomelani@gmail.com. Follow the included link to confirm your email address."
+     And I should see "We have sent you an email at @gmail.com. Follow the included link to confirm your email address."
      And I should see "Didn't receive confirmation instructions?"
      And I should be on the sign up page
      And the user count should be 1
      And the system should send an email with the following attributes:
         | to                     | from                          | subject                                                   |
-        | matteomelani@gmail.com | adminteam@theschoolcircle.com | The School Circle - New account confirmation instructions |
+        | @gmail.com | adminteam@theschoolcircle.com | The School Circle - New account confirmation instructions |
      When I follow the confirmation link in the email
        And I should see "John Welcome to The School Circle."
            
@@ -48,7 +48,7 @@ Feature: Sign up with email and password
       And I go to "the sign up page"
       And I fill in "user_profile_attributes_first_name" with "#$" within "#new_user"
       And I fill in "user_profile_attributes_last_name" with "Smith" within "#new_user"
-      And I fill in "user_email" with "matteomelani@gmail.com" within "#new_user"
+      And I fill in "user_email" with "@gmail.com" within "#new_user"
       And I fill in "user_password" with "ciaociao" within "#new_user"
     When I press "Ok, I am done!"
     Then I should be on the sign up page
@@ -60,7 +60,7 @@ Feature: Sign up with email and password
       And I go to "the sign up page"
       And I fill in "user_profile_attributes_first_name" with "John" within "#new_user"
       And I fill in "user_profile_attributes_last_name" with "#4" within "#new_user"
-      And I fill in "user_email" with "matteomelani@gmail.com" within "#new_user"
+      And I fill in "user_email" with "@gmail.com" within "#new_user"
       And I fill in "user_password" with "ciaociao" within "#new_user"
     When I press "Ok, I am done!"
     Then I should be on the sign up page

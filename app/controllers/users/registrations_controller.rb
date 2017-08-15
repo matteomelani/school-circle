@@ -117,7 +117,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
    
   def welcome_message
-    @user_email = "matteomelani@gmail.com"
+    @user_email = "@gmail.com"
     @user_name = "Gonzo"
   end 
 end

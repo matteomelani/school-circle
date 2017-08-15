@@ -569,8 +569,8 @@ function load_js_for_messages_new_page(auth_token) {
 		       self._renderItem( ul, item );
 		    });
 		},
-		// add the description next to the menu item for ex: Matteo Melani(@matteomelani)
-		// where "@matteomelani" is the user name or handle
+		// add the description next to the menu item for ex: Matteo Melani(@)
+		// where "@" is the user name or handle
 		_renderItem: function( ul, item ) 
 		{    
 		    if (!item.desc) 

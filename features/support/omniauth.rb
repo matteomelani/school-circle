@@ -26,7 +26,7 @@ Before('@omniauth_facebook_google_test') do
        },
      'user_info' => { 
        'nickname'   => "profile.php?id=531564247",
-       'email'      => "matteomelani@yahoo.com",
+       'email'      => "@yahoo.com",
        'first_name' => "Matteo",
        'last_name'  => "Melani",
        'name'       => "Matteo Melani",
@@ -53,7 +53,7 @@ Before('@omniauth_facebook_google_test') do
              'name' => "Menlo Park, California"
            },
            'gender'   => "male",
-           'email'    => "matteomelani@yahoo.com",
+           'email'    => "@yahoo.com",
            'timezone' => "-7",
            'locale'   => "en_US",
            'verified' => true
@@ -65,6 +65,6 @@ Before('@omniauth_facebook_google_test') do
   {
       'provider'  => "open_id",
       'uid'       => "https://www.google.com/accounts/o8/id?id=118181138998978630963",
-      'user_info' => {'email' => "matteomelani@yahoo.com", 'first_name' => "Test", 'last_name' => "User", 'name' => "Test User"}
+      'user_info' => {'email' => "@yahoo.com", 'first_name' => "Test", 'last_name' => "User", 'name' => "Test User"}
   }
 end

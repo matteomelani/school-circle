@@ -22,7 +22,7 @@ Feature: Signinin with third party service: Google, Aol, Facebook and Yahoo
       
     Examples: valid name and email variations
         | provider | email                     | name            |
-        | Google   | matteomelani@gmail.com    | matteo melani   |
+        | Google   | @gmail.com    | matteo melani   |
         | Yahoo    | matteo_melani@yahoo.com   | ma melani       |
         | Aol      | matteo.melani@aol.com     | matt melani     |
         | Facebook | matteo.melani@aol.com     | matt melani     |
@@ -63,18 +63,18 @@ Feature: Signinin with third party service: Google, Aol, Facebook and Yahoo
      
     @omniauth_facebook_google_test
     Scenario: Sign in with Facebook then sign in with Google
-      Given that I have a valid "Facebook" account with email "matteomelani@yahoo.com"
-        And that I have a valid "Gmail" account with email "matteomelani@yahoo.com"
+      Given that I have a valid "Facebook" account with email "@yahoo.com"
+        And that I have a valid "Gmail" account with email "@yahoo.com"
         And that I am not signed in
         And I go to the sign in page 
         And I follow image link "Facebook"
         And I should see "You signed in using your Facebook account ("
-        And I should be on matteomelani@yahoo.com's home page
+        And I should be on @yahoo.com's home page
         And that I am not signed in
         And I go to the sign in page
       When I follow image link "Google"
       Then I should see "You signed in using your Google account ("
-        And I should be on matteomelani@yahoo.com's home page
+        And I should be on @yahoo.com's home page
   
       
         
